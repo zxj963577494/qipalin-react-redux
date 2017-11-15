@@ -1,24 +1,25 @@
-import has from 'lodash/has'
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
-import { ConnectedRouter } from 'react-router-redux'
+import { Route } from 'react-router-dom'
+import { ConnectedRouter as Router } from 'react-router-redux'
+import App from '../App'
 
 export default class Root extends Component {
   constructor(props) {
     super(props)
+    this.onUpdate = this.onUpdate.bind(this)
+  }
+  onUpdate() {
+    const { store } = this.props
+    console.log(store)
   }
   render() {
-    const { store, history, routes, type, renderProps } = this.props
+    const { store, history, routes } = this.props
     return (
       <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Router routes={routes} />
-        </ConnectedRouter>
+        <Router history={history} onUpdate={this.onUpdate}>
+          <Route path="/" component={App} />
+        </Router>
       </Provider>
     )
   }

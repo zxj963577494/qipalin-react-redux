@@ -1,12 +1,10 @@
 import React from 'react'
-import { Route } from 'react-router'
-import { App } from 'containers'
+import { Route } from 'react-router-dom'
+import {App} from '../containers'
 
 export default () => {
   const routes = (
-    <div>
-      <Route exact path="/" component={App} />
-    </div>
+    <Route path="/" component={App}/>
   )
   return routes
 }

@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import {put, fork, take, call} from 'redux-saga/effects'
 
 function* init() {

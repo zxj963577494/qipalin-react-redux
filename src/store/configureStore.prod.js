@@ -1,10 +1,8 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import CreateSagaMiddleware, { END } from 'redux-saga'
 import {
-  ConnectedRouter,
   routerReducer,
-  routerMiddleware,
-  push
+  routerMiddleware
 } from 'react-router-redux'
 import rootReducer from '../reducers'
 
