@@ -12,8 +12,6 @@ const store = configureStore({})
 
 store.runSaga(rootSaga)
 
-console.log(getRoutes())
-
 ReactDOM.render(
   <Root store={store} history={history} router={getRoutes()} />,
   document.getElementById('root')

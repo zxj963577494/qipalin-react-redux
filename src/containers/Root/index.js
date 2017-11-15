@@ -11,10 +11,9 @@ export default class Root extends Component {
   }
   onUpdate() {
     const { store } = this.props
-    console.log(store)
   }
   render() {
-    const { store, history, routes } = this.props
+    const { store, history } = this.props
     return (
       <Provider store={store}>
         <Router history={history} onUpdate={this.onUpdate}>

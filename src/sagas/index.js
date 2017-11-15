@@ -1,10 +1,6 @@
-// eslint-disable-next-line
-import {put, fork, take, call} from 'redux-saga/effects'
-
-function* init() {
-  yield console.log(init)
-}
+import { all, fork } from 'redux-saga/effects'
+import postsSaga from './postsSaga'
 
 export default function* rootSaga() {
-  yield init
+  yield all([fork(postsSaga)])
 }
