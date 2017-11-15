@@ -21,7 +21,7 @@ export default function configureStore(initialState) {
   ]
   const enhancers = compose(
     applyMiddleware(...middlewares),
-    DevTools.instrument()
+    DevTools.instrument(),
   )
   const store = createStore(
     combineReducers({
