@@ -9,12 +9,11 @@ class App extends Component {
   
   render() {
     const { postsList } = this.props
-    console.log(this.postsList)
     return (
       <div>
         <h1>APP</h1>
         {
-          postsList.map((item) => (<h1>{item.title.rendered}</h1>))
+          postsList.map((item) => (<h1 key={item.id}>{item.title.rendered}</h1>))
         }
       </div>
     )

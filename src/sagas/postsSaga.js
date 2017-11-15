@@ -1,7 +1,7 @@
 import { put, fork, take, call } from 'redux-saga/effects'
 import {
   GET_POSTS_REQUEST
-} from '../constants'
+} from '../constants/actionTypes'
 import * as action from '../actions'
 import { getPosts } from '../services/api'
 
