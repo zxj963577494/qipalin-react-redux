@@ -1,9 +1,10 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import CreateSagaMiddleware, { END } from 'redux-saga'
 import {
   routerReducer,
   routerMiddleware
 } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
 import rootReducer from '../reducers'
 
 export default function configureStore(initialState) {
@@ -12,7 +13,7 @@ export default function configureStore(initialState) {
   const routeMiddleware = routerMiddleware(history)
   const store = createStore(
     combineReducers({
-      ...rootReducer,
+      root: rootReducer,
       router: routerReducer
     }),
     initialState,
