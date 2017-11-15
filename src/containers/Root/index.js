@@ -10,7 +10,7 @@ export default class Root extends Component {
     this.onUpdate = this.onUpdate.bind(this)
   }
   onUpdate() {
-    const { store } = this.props
+    // const { store } = this.props
   }
   render() {
     const { store, history } = this.props
