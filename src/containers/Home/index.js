@@ -4,10 +4,6 @@ import { connect } from 'react-redux'
 import { getPostsRequest } from '../../actions'
 
 class Home extends Component {
-  static propTypes = {
-    prop: PropTypes
-  }
-
   componentDidMount() {
     this.props.getPosts({})
   }
@@ -33,6 +29,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(getPostsRequest(payload))
     }
   }
+}
+
+Home.propTypes = {
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

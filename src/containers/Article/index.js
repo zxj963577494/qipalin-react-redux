@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { getPostsRequest } from '../../actions'
 
 class Article extends Component {
-  static propTypes = {
-    prop: PropTypes
+  componentDidMount() {
+    this.props.getPosts({})
   }
 
   render() {
@@ -16,4 +17,22 @@ class Article extends Component {
   }
 }
 
-export default connect(null, null)(Article)
+const mapStateToProps = (state, ownProps) => {
+  return {
+    postsList: state.root.posts.postsList,
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    getPosts: payload => {
+      dispatch(getPostsRequest(payload))
+    }
+  }
+}
+
+Article.propTypes = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Article)

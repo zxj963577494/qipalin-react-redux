@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { NavBar } from 'antd-mobile'
 import { TabBar } from 'antd-mobile'
 
 export default class MyTabBar extends Component {
@@ -23,6 +24,8 @@ export default class MyTabBar extends Component {
                 this.props.navigateTo(item.key)
               }}
             >
+            <NavBar>奇葩林</NavBar>
+            {this.props.routers}
             </TabBar.Item>
           ))}
         </TabBar>
@@ -46,5 +49,6 @@ export default class MyTabBar extends Component {
 MyTabBar.propTypes = {
   tabbars: PropTypes.array.isRequired,
   changeTabBar: PropTypes.func.isRequired,
-  navigateTo: PropTypes.func.isRequired
+  navigateTo: PropTypes.func.isRequired,
+  routers: PropTypes.object.isRequired
 }

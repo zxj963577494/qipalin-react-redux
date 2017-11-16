@@ -1,25 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavBar } from 'antd-mobile'
+import { push } from 'react-router-redux'
 import { MyTabBar } from '../../components'
 import { changeTabBar } from '../../actions'
-import { push } from 'react-router-redux'
+import getRouter from '../../routes'
 
 class App extends Component {
   constructor(props) {
     super(props)
-    this.handleClick = this.handleClick.bind(this)
-  }
-  handleClick() {
-    this.props.navigateTo('/duanzi')
   }
   render() {
     return (
       <div>
-        <NavBar>奇葩林</NavBar>
-        <button onClick={()=>alert(123)}>Home</button>
-        <button onClick={this.handleClick}>Apply</button>
         <MyTabBar
+          routers={getRouter()}
           tabbars={this.props.tabbars}
           changeTabBar={this.props.changeTabBar}
           navigateTo={this.props.navigateTo}

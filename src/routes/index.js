@@ -1,10 +1,15 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import {App} from '../containers'
+import { Home, Article, Duanzi, Picture } from '../containers'
 
 export default () => {
   const routes = (
-    <Route path="/" component={App}/>
+    <div>
+      <Route path="/home" component={Home} />
+      <Route path="/article" component={Article} />
+      <Route path="/duanzi" component={Duanzi} />
+      <Route path="/picture" component={Picture} />
+    </div>
   )
   return routes
 }
