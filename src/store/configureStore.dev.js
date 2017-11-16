@@ -6,7 +6,7 @@ import {
 } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
 import { createLogger } from 'redux-logger'
-import DevTools from '../containers/DevTools/DevTools'
+//import DevTools from '../containers/DevTools/DevTools'
 import rootReducer from '../reducers'
 
 export default function configureStore(initialState) {
@@ -21,7 +21,8 @@ export default function configureStore(initialState) {
   ]
   const enhancers = compose(
     applyMiddleware(...middlewares),
-    DevTools.instrument(),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    //DevTools.instrument(),
   )
   const store = createStore(
     combineReducers({
@@ -33,5 +34,6 @@ export default function configureStore(initialState) {
   )
   store.runSaga = sagaMiddleware.run
   store.close = () => store.dispatch(END)
+  store.history = history
   return store
 }
