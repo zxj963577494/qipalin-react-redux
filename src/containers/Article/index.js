@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-export default class Article extends Component {
+class Article extends Component {
   static propTypes = {
     prop: PropTypes
   }
-  
+
   render() {
     return (
       <div>
@@ -15,4 +16,4 @@ export default class Article extends Component {
   }
 }
 
-
+export default connect(null, null)(Article)

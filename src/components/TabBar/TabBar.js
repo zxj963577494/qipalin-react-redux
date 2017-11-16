@@ -20,6 +20,7 @@ export default class MyTabBar extends Component {
               selected={item.selected}
               onPress={()=>{
                 this.props.changeTabBar(item.key)
+                this.props.navigateTo(item.key)
               }}
             >
             </TabBar.Item>
@@ -44,5 +45,6 @@ export default class MyTabBar extends Component {
 
 MyTabBar.propTypes = {
   tabbars: PropTypes.array.isRequired,
-  changeTabBar: PropTypes.func.isRequired
+  changeTabBar: PropTypes.func.isRequired,
+  navigateTo: PropTypes.func.isRequired
 }
