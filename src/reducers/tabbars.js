@@ -4,17 +4,29 @@ const initialState = [
   {
     title: '首页',
     key: 'Home',
-    icon: 'https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg',
-    selectedIcon:
-      'https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg',
+    icon: require('../assets/images/tar-home.png'),
+    selectedIcon: require('../assets/images/tar-home-on.png'),
     selected: true
   },
   {
     title: '趣闻',
     key: 'Acticle',
-    icon: 'https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg',
-    selectedIcon:
-      'https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg',
+    icon: '../assets/images/tar-topic.png',
+    selectedIcon: '../assets/images/tar-topic-on.png',
+    selected: false
+  },
+  {
+    title: '段子',
+    key: 'Acticle',
+    icon: '../assets/images/tar-duanzi.png',
+    selectedIcon: '../assets/images/tar-duanzi-on.png',
+    selected: false
+  },
+  {
+    title: '趣图',
+    key: 'Acticle',
+    icon: '../assets/images/tar-picture.png',
+    selectedIcon: '../assets/images/tar-picture-on.png.png',
     selected: false
   }
 ]

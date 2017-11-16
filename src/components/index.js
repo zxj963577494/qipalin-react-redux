@@ -1,4 +1,4 @@
-import MyTabBar from './TabBar'
+import MyTabBar from './TabBar/TabBar'
 
 export {
   MyTabBar

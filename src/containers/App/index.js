@@ -19,7 +19,7 @@ class App extends Component {
       <div>
         <NavBar>奇葩林</NavBar>
         <h1>HELLO</h1>
-        <MyTabBar />
+        <MyTabBar tabbars = {this.props.tabbars} changeTabBar = {this.props.changeTabBar} />
       </div>
     )
   }
@@ -27,7 +27,8 @@ class App extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    postsList: state.root.posts.postsList
+    postsList: state.root.posts.postsList,
+    tabbars: state.root.tabbars
   }
 }
 
