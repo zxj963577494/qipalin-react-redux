@@ -3,15 +3,9 @@ import PropTypes from 'prop-types'
 import { TabBar } from 'antd-mobile'
 
 export default class MyTabBar extends Component {
-  constructor(props) {
-    super(props)
-  }
-  changeTabBar(key) {
-    //this.props.changeTabBar(key)
-  }
   render() {
     return (
-      <div className="tabbar">
+      <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#33A3F4"
@@ -24,7 +18,11 @@ export default class MyTabBar extends Component {
               icon={this.renderIcon(item.icon)}
               selectedIcon={this.renderIcon(item.selectedIcon)}
               selected={item.selected}
-            />
+              onPress={()=>{
+                this.props.changeTabBar(item.key)
+              }}
+            >
+            </TabBar.Item>
           ))}
         </TabBar>
       </div>
@@ -37,7 +35,7 @@ export default class MyTabBar extends Component {
         style={{
           width: '22px',
           height: '22px',
-          backgroundImage: 'url(' + imgUrl + ')'
+          background: 'url('+ imgUrl + ') center center /  21px 21px no-repeat'
         }}
       />
     )

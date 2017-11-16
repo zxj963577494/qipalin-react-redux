@@ -1,24 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavBar, Icon } from 'antd-mobile'
-import { getPostsRequest, changeTabBar } from '../../actions'
+import { NavBar } from 'antd-mobile'
 import { MyTabBar } from '../../components'
+import { changeTabBar } from '../../actions'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  componentDidMount = () => {
-    this.props.getPosts({})
-  }
-
   render() {
-    const { postsList } = this.props
     return (
       <div>
         <NavBar>奇葩林</NavBar>
-        <h1>HELLO</h1>
+        <div>{this.props.children}</div>
         <MyTabBar tabbars = {this.props.tabbars} changeTabBar = {this.props.changeTabBar} />
       </div>
     )
@@ -27,16 +18,12 @@ class App extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    postsList: state.root.posts.postsList,
     tabbars: state.root.tabbars
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getPosts: payload => {
-      dispatch(getPostsRequest(payload))
-    },
     changeTabBar: payload => {
       dispatch(changeTabBar(payload))
     }

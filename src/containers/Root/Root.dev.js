@@ -4,6 +4,11 @@ import { Route } from 'react-router-dom'
 import { ConnectedRouter as Router } from 'react-router-redux'
 import DevTools from '../DevTools/DevTools'
 import App from '../App'
+import Home from '../Home'
+import Article from '../Article'
+import Duanzi from '../Duanzi'
+import Picture from '../Picture'
+
 
 export default class Root extends Component {
   constructor(props) {
@@ -19,7 +24,13 @@ export default class Root extends Component {
       <Provider store={store}>
         <div>
           <Router history={history} onUpdate={this.onUpdate}>
-            <Route path="/" component={App} />
+            <div>
+              <Route path="/" component={App} />
+              <Route path="/home" component={Home} />
+              <Route path="/article" component={Article} />
+              <Route path="/duanzi" component={Duanzi} />
+              <Route path="/picture" component={Picture} />
+            </div>
           </Router>
           <DevTools />
         </div>
