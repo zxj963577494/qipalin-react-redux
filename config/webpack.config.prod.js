@@ -166,7 +166,8 @@ module.exports = {
           // use the "style" loader inside the async code so CSS from them won't be
           // in the main CSS file.
           {
-            test: /\.css$/,
+            test: /\.(css|scss)$/,
+            exclude: /node_modules\/antd-mobile/, // 排除开启css module, antd样式失效
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {
@@ -181,6 +182,7 @@ module.exports = {
                       loader: require.resolve('css-loader'),
                       options: {
                         importLoaders: 1,
+                        modules: true,
                         minimize: true,
                         sourceMap: shouldUseSourceMap,
                       },

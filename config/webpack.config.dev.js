@@ -138,13 +138,6 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
-          {
-            test: /\.(png|jpg|gif)$/,
-            loader: require.resolve('file-loader'),
-            options: {
-              name: '[path][name].[hash:8].[ext]'
-            }
-          },
           // Process JS with Babel.
           {
             test: /\.(js|jsx|mjs)$/,
@@ -164,13 +157,15 @@ module.exports = {
           // In production, we use a plugin to extract that CSS to a file, but
           // in development "style" loader enables hot editing of CSS.
           {
-            test: /\.css$/,
+            test: /\.(css|scss)$/,
+            exclude: /node_modules\/antd-mobile/, // 排除开启css module, antd样式失效
             use: [
               require.resolve('style-loader'),
               {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
+                  modules: true
                 },
               },
               {

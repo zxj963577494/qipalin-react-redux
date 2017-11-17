@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { NavBar } from 'antd-mobile'
-import { TabBar } from 'antd-mobile'
+import { NavBar, TabBar, Flex, WingBlank } from 'antd-mobile'
+
 
 export default class MyTabBar extends Component {
   render() {
@@ -25,7 +25,9 @@ export default class MyTabBar extends Component {
               }}
             >
             <NavBar>奇葩林</NavBar>
+            <WingBlank size='sm'>
             {this.props.routers}
+            </WingBlank>
             </TabBar.Item>
           ))}
         </TabBar>

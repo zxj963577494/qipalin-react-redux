@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux'
-import postReducer from './posts'
+import {postsReducer, stickyPostsReducer} from './posts'
 import tabbarsReducer from './tabbars'
 
 const rootReducer = combineReducers({
-  posts: postReducer,
+  posts: postsReducer,
+  sticky: stickyPostsReducer,
   tabbars: tabbarsReducer
 })
 
