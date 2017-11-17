@@ -4,6 +4,8 @@ import { NavBar, TabBar } from 'antd-mobile'
 
 export default class MyTabBar extends Component {
   render() {
+    const {children} = this.props
+    console.log(this.props)
     return (
       <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
         <TabBar

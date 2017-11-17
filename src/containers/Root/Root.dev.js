@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { Route } from 'react-router-dom'
 import { ConnectedRouter as Router } from 'react-router-redux'
+import { Route } from 'react-router-dom'
 //import DevTools from '../DevTools/DevTools'
-import App from '../App'
+import routes from '../../routes'
+import { App, Home, Article, Duanzi, Picture } from '../index'
 
 export default class Root extends Component {
   render() {
@@ -13,7 +14,11 @@ export default class Root extends Component {
         <div>
           <Router history={store.history}>
             <div>
-              <App />
+              <Route path="/" component={App} />
+              <Route path="/home" component={Home} />
+              <Route path="/article" component={Article} />
+              <Route path="/duanzi" component={Duanzi} />
+              <Route path="/picture" component={Picture} />
             </div>
           </Router>
           {/* <DevTools /> */}
