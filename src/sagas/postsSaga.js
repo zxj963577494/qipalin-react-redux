@@ -7,6 +7,7 @@ import * as action from '../actions'
 import { getPosts, getStickyPosts } from '../services/api'
 
 function* getPostsWorker(payload) {
+  console.log('watchPosts')
   try {
     const response = yield call(getPosts, payload)
     yield put(action.getPostsSuccess(response.data))
@@ -23,6 +24,7 @@ function* watchPosts() {
 }
 
 function* getStickyPostsWorker() {
+  console.log('watchStickyPosts')
   try {
     const response = yield call(getStickyPosts)
     yield put(action.getStickyPostsSuccess(response.data))

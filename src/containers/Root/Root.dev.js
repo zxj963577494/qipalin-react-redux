@@ -13,7 +13,7 @@ export default class Root extends Component {
         <div>
           <Router history={store.history}>
             <div>
-              <Route path="/" component={App} />
+              <App />
             </div>
           </Router>
           {/* <DevTools /> */}

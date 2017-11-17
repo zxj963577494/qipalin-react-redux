@@ -47,7 +47,7 @@ function stickyPostsReducer(state = initialStickyPostsState, action) {
       if (action.payload.length > 0) {
         return {
           ...state,
-          sticky: state.list.slice(0, 1).concat(action.payload),
+          list: state.list.slice(0, 1).concat(action.payload),
           isFetching: false,
           isShowLogo: false
         }

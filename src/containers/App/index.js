@@ -6,9 +6,6 @@ import { changeTabBar } from '../../actions'
 import getRouter from '../../routes'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     return (
       <div>
