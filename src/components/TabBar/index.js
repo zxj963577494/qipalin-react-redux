@@ -51,5 +51,6 @@ MyTabBar.propTypes = {
   tabbars: PropTypes.array.isRequired,
   changeTabBar: PropTypes.func.isRequired,
   navigateTo: PropTypes.func.isRequired,
-  routers: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  children: PropTypes.array.isRequired,
 }
