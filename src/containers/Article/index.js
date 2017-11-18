@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getArticlesRequest } from '../../actions'
+import { MyListView } from '../../components'
 
 class Article extends Component {
   componentDidMount() {
@@ -10,9 +11,7 @@ class Article extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Article</h1>
-      </div>
+      <MyListView articles={this.props.articles} />
     )
   }
 }
@@ -25,14 +24,15 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getPosts: payload => {
+    getArticles: payload => {
       dispatch(getArticlesRequest(payload))
     }
   }
 }
 
 Article.propTypes = {
-  
+  articles: PropTypes.object.isRequired,
+  getArticles: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { ListView } from 'antd-mobile'
+import { ListView, ActivityIndicator } from 'antd-mobile'
 import fonts from '../../assets/font/font.css'
 import styles from './ListView.css'
 import utils from '../../utils/utils'
@@ -66,28 +66,32 @@ export default class MyListView extends Component {
       console.log('isFetching:' + this.props.articles.isFetching);
       return (
         <div style={{ padding: 5, textAlign: 'center' }}>
-          {this.props.articles.isFetching ? '正在加载...' : '到底了'}
+          {this.props.articles.isFetching ? <ActivityIndicator toast text='加载中...'/> : '到底了'}
         </div>
       )
     }
     return (
       <ListView
         dataSource={dataSource}
+        initialListSize={6}
         renderFooter={fonter}
         renderRow={row}
         renderSeparator={separator}
         className="am-list"
-        pageSize={4}
+        pageSize={10}
         useBodyScroll
         onScroll={() => {
           console.log('scroll')
         }}
-        scrollRenderAheadDistance={500}
+        scrollEventThrottle={50}
+        scrollRenderAheadDistance={50}
         onEndReached={this.onEndReached}
-        onEndReachedThreshold={10}
+        onEndReachedThreshold={500}
       />
     )
   }
 }
 
-MyListView.propTypes = {}
+MyListView.propTypes = {
+  articles: PropTypes.object.isRequired
+}

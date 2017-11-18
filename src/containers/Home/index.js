@@ -9,7 +9,7 @@ import styles from './Home.css'
 class Home extends Component {
   componentDidMount() {
     this.props.getStickyArticles({})
-    this.props.getArticles({})
+    this.props.getArticles({per_page: 6})
   }
 
   // 展示LOGO
