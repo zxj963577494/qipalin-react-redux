@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getPostsRequest } from '../../actions'
+import { getArticlesRequest } from '../../actions'
 
 class Article extends Component {
   componentDidMount() {
-    this.props.getPosts({})
+    this.props.getArticles({})
   }
 
   render() {
@@ -19,14 +19,14 @@ class Article extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    postsList: state.root.posts.postsList,
+    articles: state.root.articles,
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getPosts: payload => {
-      dispatch(getPostsRequest(payload))
+      dispatch(getArticlesRequest(payload))
     }
   }
 }

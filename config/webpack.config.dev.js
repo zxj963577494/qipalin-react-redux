@@ -240,6 +240,14 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
+          // 加载字体
+          {
+            test: /\.(eot|svg|ttf|woff|woff2)$/,
+            loader: require.resolve('url-loader'),
+            options: {
+              name: 'static/fonts/[name].[hash:8].[ext]',
+            },
+          },
         ],
       },
       // ** STOP ** Are you adding a new loader?

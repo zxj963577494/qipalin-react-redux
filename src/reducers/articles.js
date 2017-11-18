@@ -1,18 +1,20 @@
 import {
-  GET_POSTS_REQUEST,
-  GET_POSTS_SUCCESS,
-  GET_POSTS_FAILED,
-  GET_STICKYPOSTS_REQUEST,
-  GET_STICKYPOSTS_SUCCESS,
-  GET_STICKYPOSTS_FAILED
+  GET_ARTICLES_REQUEST,
+  GET_ARTICLES_SUCCESS,
+  GET_ARTICLES_FAILED,
+  GET_STICKY_ARTICLES_REQUEST,
+  GET_STICKY_ARTICLES_SUCCESS,
+  GET_STICKY_ARTICLES_FAILED
 } from '../constants/actionTypes'
 
-const initialPostsState = {
-  postsList: [],
-  isFetching: false
+const initialArticlesState = {
+  list: [],
+  isFetching: false,
+  pageIndex: 1,
+  pageNum: 10
 }
 
-const initialStickyPostsState = {
+const initialStickyArticlesState = {
   list: [],
   isShowLogo: true,
   isFetching: false,
@@ -22,28 +24,28 @@ const initialStickyPostsState = {
   }
 }
 
-function postsReducer(state = initialPostsState, action) {
+function articlesReducer(state = initialArticlesState, action) {
   switch (action.type) {
-    case GET_POSTS_REQUEST:
-      return { ...state, isFetching: true, postsList: [] }
-    case GET_POSTS_SUCCESS:
+    case GET_ARTICLES_REQUEST:
+      return { ...state, isFetching: true }
+    case GET_ARTICLES_SUCCESS:
       return {
         ...state,
-        postsList: state.postsList.concat(action.payload),
+        list: state.list.concat(action.payload),
         isFetching: false
       }
-    case GET_POSTS_FAILED:
+    case GET_ARTICLES_FAILED:
       return { ...state, isFetching: false }
     default:
       return { ...state, isFetching: false }
   }
 }
 
-function stickyPostsReducer(state = initialStickyPostsState, action) {
+function stickyArticlesReducer(state = initialStickyArticlesState, action) {
   switch (action.type) {
-    case GET_STICKYPOSTS_REQUEST:
+    case GET_STICKY_ARTICLES_REQUEST:
       return { ...state, isFetching: true }
-    case GET_STICKYPOSTS_SUCCESS:
+    case GET_STICKY_ARTICLES_SUCCESS:
       if (action.payload.length > 0) {
         return {
           ...state,
@@ -54,11 +56,11 @@ function stickyPostsReducer(state = initialStickyPostsState, action) {
       } else {
         return { ...state, isFetching: false }
       }
-    case GET_STICKYPOSTS_FAILED:
+    case GET_STICKY_ARTICLES_FAILED:
       return { ...state, isFetching: false }
     default:
       return { ...state, isFetching: false }
   }
 }
 
-export { postsReducer, stickyPostsReducer }
+export { articlesReducer, stickyArticlesReducer }

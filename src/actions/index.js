@@ -1,35 +1,35 @@
 import {
-  GET_POSTS_REQUEST,
-  GET_POSTS_SUCCESS,
-  GET_POSTS_FAILED,
-  GET_STICKYPOSTS_REQUEST,
-  GET_STICKYPOSTS_SUCCESS,
-  GET_STICKYPOSTS_FAILED,
+  GET_ARTICLES_REQUEST,
+  GET_ARTICLES_SUCCESS,
+  GET_ARTICLES_FAILED,
+  GET_STICKY_ARTICLES_REQUEST,
+  GET_STICKY_ARTICLES_SUCCESS,
+  GET_STICKY_ARTICLES_FAILED,
   CHANGE_TABBAR
 } from '../constants/actionTypes'
 
-export const getPostsRequest = function(payload) {
-  return { type: GET_POSTS_REQUEST, payload }
+export const getArticlesRequest = function(payload) {
+  return { type: GET_ARTICLES_REQUEST, payload }
 }
 
-export const getPostsSuccess = function(payload) {
-  return { type: GET_POSTS_SUCCESS, payload }
+export const getArticlesSuccess = function(payload) {
+  return { type: GET_ARTICLES_SUCCESS, payload }
 }
 
-export const getPostsFailed = function(payload) {
-  return { type: GET_POSTS_FAILED, payload }
+export const getArticlesFailed = function(payload) {
+  return { type: GET_ARTICLES_FAILED, payload }
 }
 
-export const getStickyPostsRequest = function() {
-  return { type: GET_STICKYPOSTS_REQUEST }
+export const getStickyArticlesRequest = function() {
+  return { type: GET_STICKY_ARTICLES_REQUEST }
 }
 
-export const getStickyPostsSuccess = function(payload) {
-  return { type: GET_STICKYPOSTS_SUCCESS, payload }
+export const getStickyArticlesSuccess = function(payload) {
+  return { type: GET_STICKY_ARTICLES_SUCCESS, payload }
 }
 
-export const getStickyPostsFailed = function(payload) {
-  return { type: GET_STICKYPOSTS_FAILED, payload }
+export const getStickyArticlesFailed = function(payload) {
+  return { type: GET_STICKY_ARTICLES_FAILED, payload }
 }
 
 export const changeTabBar = function(payload) {

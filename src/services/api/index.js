@@ -1,3 +1,3 @@
-import { getPosts, getStickyPosts } from './posts'
+import { getArticles, getStickyArticles } from './articles'
 
-export { getPosts, getStickyPosts }
+export { getArticles, getStickyArticles }

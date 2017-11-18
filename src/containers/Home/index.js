@@ -2,15 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Flex, WhiteSpace } from 'antd-mobile'
-import { getPostsRequest, getStickyPostsRequest } from '../../actions'
-import {MyCarousel} from '../../components'
-import styles from './Home.scss'
+import { getArticlesRequest, getStickyArticlesRequest } from '../../actions'
+import { MyCarousel, MyListView } from '../../components'
+import styles from './Home.css'
 
 class Home extends Component {
   componentDidMount() {
-    console.log('componentDidMount')
-    this.props.getPosts({})
-    this.props.getStickyPosts()
+    this.props.getStickyArticles({})
+    this.props.getArticles({})
   }
 
   // 展示LOGO
@@ -32,15 +31,19 @@ class Home extends Component {
 
   // 展示轮播图
   renderCarousel() {
-    return (<MyCarousel content={this.props.sticky.list}/>)
+    return <MyCarousel content={this.props.sticky.list} />
   }
 
   render() {
-    const { sticky, postsList } = this.props
+    const { sticky, articles } = this.props
     return (
       <div>
         <div className={styles.header}>
           {sticky.isShowLogo ? this.renderLogo(sticky) : this.renderCarousel()}
+        </div>
+        <WhiteSpace size="xs" />
+        <div>
+          <MyListView articles={articles} />
         </div>
       </div>
     )
@@ -50,26 +53,26 @@ class Home extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     sticky: state.root.sticky,
-    postsList: state.root.posts.postsList
+    articles: state.root.articles
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getPosts: payload => {
-      dispatch(getPostsRequest(payload))
+    getArticles: payload => {
+      dispatch(getArticlesRequest(payload))
     },
-    getStickyPosts: () => {
-      dispatch(getStickyPostsRequest())
+    getStickyArticles: () => {
+      dispatch(getStickyArticlesRequest())
     }
   }
 }
 
 Home.propTypes = {
   sticky: PropTypes.object.isRequired,
-  postsList: PropTypes.array.isRequired,
-  getPosts: PropTypes.func.isRequired,
-  getStickyPosts: PropTypes.func.isRequired,
+  articles: PropTypes.object.isRequired,
+  getArticles: PropTypes.func.isRequired,
+  getStickyArticles: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
