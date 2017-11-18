@@ -7,9 +7,12 @@ import getRouter from '../../routes'
 
 class App extends Component {
   render() {
+    console.dir('App:' + {...this.props.children})
     return (
       <div>
         <MyTabBar
+          history={this.props.history}
+          children={this.props.children}
           routers={getRouter()}
           tabbars={this.props.tabbars}
           changeTabBar={this.props.changeTabBar}

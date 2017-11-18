@@ -4,8 +4,8 @@ import { NavBar, TabBar } from 'antd-mobile'
 
 export default class MyTabBar extends Component {
   render() {
-    const {children} = this.props
-    console.log(this.props)
+    const pathname = this.props.history.location.pathname
+    const children = this.props.children
     return (
       <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
         <TabBar
@@ -19,14 +19,14 @@ export default class MyTabBar extends Component {
               key={item.key}
               icon={this.renderIcon(item.icon)}
               selectedIcon={this.renderIcon(item.selectedIcon)}
-              selected={item.selected}
-              onPress={()=>{
+              selected={pathname === '/' + item.key}
+              onPress={() => {
                 this.props.changeTabBar(item.key)
                 this.props.navigateTo(item.key)
               }}
             >
-            <NavBar>奇葩林</NavBar>
-             {this.props.routers}
+              <NavBar>奇葩林</NavBar>
+              {pathname === '/' + item.key ? children : null}
             </TabBar.Item>
           ))}
         </TabBar>
@@ -40,7 +40,7 @@ export default class MyTabBar extends Component {
         style={{
           width: '22px',
           height: '22px',
-          background: 'url('+ imgUrl + ') center center /  21px 21px no-repeat'
+          background: 'url(' + imgUrl + ') center center /  21px 21px no-repeat'
         }}
       />
     )
