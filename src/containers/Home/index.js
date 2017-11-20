@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { Flex, WhiteSpace } from 'antd-mobile'
 import { getArticlesRequest, getStickyArticlesRequest } from '../../actions'
-import { MyCarousel, MyHomeListView } from '../../components'
+import { MyCarousel, HomeListView } from '../../components'
 import styles from './Home.css'
 
 class Home extends Component {
@@ -44,7 +44,7 @@ class Home extends Component {
         </div>
         <WhiteSpace size="xs" />
         <div>
-          <MyHomeListView articles={articles} navigateTo={navigateTo}/>
+          <HomeListView articles={articles} navigateTo={navigateTo}/>
         </div>
       </div>
     )

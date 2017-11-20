@@ -1,11 +1,13 @@
 import MyTabBar from './TabBar'
 import MyCarousel from './Carousel'
 import MyListView from './ListView'
-import MyHomeListView from './HomeListView'
+import HomeListView from './HomeListView'
+import JokeListView from './JokeListView'
 
 export {
   MyTabBar,
   MyCarousel,
   MyListView,
-  MyHomeListView
+  HomeListView,
+  JokeListView
 }
