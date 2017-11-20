@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 import { Flex, WhiteSpace } from 'antd-mobile'
 import { getArticlesRequest, getStickyArticlesRequest } from '../../actions'
 import { MyCarousel, MyListView } from '../../components'
@@ -35,7 +36,7 @@ class Home extends Component {
   }
 
   render() {
-    const { sticky, articles } = this.props
+    const { sticky, articles, navigateTo } = this.props
     return (
       <div>
         <div className={styles.header}>
@@ -43,7 +44,7 @@ class Home extends Component {
         </div>
         <WhiteSpace size="xs" />
         <div>
-          <MyListView articles={articles} />
+          <MyListView articles={articles} navigateTo={navigateTo} />
         </div>
       </div>
     )
@@ -64,6 +65,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     getStickyArticles: () => {
       dispatch(getStickyArticlesRequest())
+    },
+    navigateTo: location => {
+      dispatch(push(location))
     }
   }
 }
@@ -72,7 +76,8 @@ Home.propTypes = {
   sticky: PropTypes.object.isRequired,
   articles: PropTypes.object.isRequired,
   getArticles: PropTypes.func.isRequired,
-  getStickyArticles: PropTypes.func.isRequired
+  getStickyArticles: PropTypes.func.isRequired,
+  navigateTo: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

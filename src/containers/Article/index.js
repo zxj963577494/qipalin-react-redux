@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 import { getArticlesRequest } from '../../actions'
 import { MyListView } from '../../components'
 
@@ -11,7 +12,7 @@ class Article extends Component {
 
   render() {
     return (
-      <MyListView articles={this.props.articles} />
+      <MyListView articles={this.props.articles} navigateTo={this.props.navigateTo} />
     )
   }
 }
@@ -26,13 +27,17 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getArticles: payload => {
       dispatch(getArticlesRequest(payload))
+    },
+    navigateTo: location => {
+      dispatch(push(location))
     }
   }
 }
 
 Article.propTypes = {
   articles: PropTypes.object.isRequired,
-  getArticles: PropTypes.func.isRequired
+  getArticles: PropTypes.func.isRequired,
+  navigateTo: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article)

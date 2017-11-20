@@ -2,6 +2,9 @@ import {
   GET_ARTICLES_REQUEST,
   GET_ARTICLES_SUCCESS,
   GET_ARTICLES_FAILED,
+  GET_ARTICLE_DETAIL_REQUEST,
+  GET_ARTICLE_DETAIL_SUCCESS,
+  GET_ARTICLE_DETAIL_FAILED,
   GET_STICKY_ARTICLES_REQUEST,
   GET_STICKY_ARTICLES_SUCCESS,
   GET_STICKY_ARTICLES_FAILED,
@@ -18,6 +21,18 @@ export const getArticlesSuccess = function(payload) {
 
 export const getArticlesFailed = function(payload) {
   return { type: GET_ARTICLES_FAILED, payload }
+}
+
+export const getArticleDetailRequest = function(payload) {
+  return { type: GET_ARTICLE_DETAIL_REQUEST, payload }
+}
+
+export const getArticleDetailSuccess = function(payload) {
+  return { type: GET_ARTICLE_DETAIL_SUCCESS, payload }
+}
+
+export const getArticleDetailFailed = function(payload) {
+  return { type: GET_ARTICLE_DETAIL_FAILED, payload }
 }
 
 export const getStickyArticlesRequest = function() {

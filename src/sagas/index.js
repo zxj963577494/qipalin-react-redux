@@ -1,6 +1,6 @@
 import { fork } from 'redux-saga/effects'
-import { watchArticles, watchStickyArticles } from './articleSaga'
+import { watchArticles, watchStickyArticles, watchArticleDetail } from './articleSaga'
 
 export default function* rootSaga() {
-  yield [fork(watchArticles), fork(watchStickyArticles)]
+  yield [fork(watchArticles), fork(watchStickyArticles), fork(watchArticleDetail)]
 }

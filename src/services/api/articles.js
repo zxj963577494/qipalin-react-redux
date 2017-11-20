@@ -18,3 +18,12 @@ export function getArticles(payload) {
 export function getStickyArticles() {
   return http.get(api.POSTS, { params: { sticky: true, per_page: 5, page: 1 } })
 }
+
+// 获取详细文章
+export function getArticleDetail(payload) {
+  const params = {
+    include: 1,
+    ...payload
+  }
+  return http.get(api.POSTS, { params: params })
+}

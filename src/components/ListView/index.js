@@ -25,7 +25,7 @@ export default class MyListView extends Component {
     )
     const row = (rowData, sectionID, rowID) => {
       return (
-        <div key={rowID} style={{ padding: '0 15px' }}>
+        <div onClick={()=>{this.props.navigateTo('/article/'+ rowData.id)}} key={rowID} style={{ padding: '0 15px' }}>
           <div className={styles['article-row']}>
             <img src={rowData.thumbnail} alt="" />
             <div className={styles['right']}>
@@ -63,10 +63,14 @@ export default class MyListView extends Component {
       )
     }
     const fonter = () => {
-      console.log('isFetching:' + this.props.articles.isFetching);
+      console.log('isFetching:' + this.props.articles.isFetching)
       return (
         <div style={{ padding: 5, textAlign: 'center' }}>
-          {this.props.articles.isFetching ? <ActivityIndicator toast text='加载中...'/> : '到底了'}
+          {this.props.articles.isFetching ? (
+            <ActivityIndicator toast text="加载中..." />
+          ) : (
+            '到底了'
+          )}
         </div>
       )
     }
@@ -86,12 +90,13 @@ export default class MyListView extends Component {
         scrollEventThrottle={50}
         scrollRenderAheadDistance={50}
         onEndReached={this.onEndReached}
-        onEndReachedThreshold={500}
+        onEndReachedThreshold={10}
       />
     )
   }
 }
 
 MyListView.propTypes = {
-  articles: PropTypes.object.isRequired
+  articles: PropTypes.object.isRequired,
+  navigateTo: PropTypes.func.isRequired,
 }

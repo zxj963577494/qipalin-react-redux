@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { NavBar, TabBar } from 'antd-mobile'
+import { TabBar } from 'antd-mobile'
 
 export default class MyTabBar extends Component {
   render() {
     const pathname = this.props.history.location.pathname
     const children = this.props.children
     return (
-      <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
+      <div style={{ position: 'fixed', height: '93%', width: '100%', top: '7%' }}>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#33A3F4"
@@ -25,7 +25,6 @@ export default class MyTabBar extends Component {
                 this.props.navigateTo(item.key)
               }}
             >
-              <NavBar>奇葩林</NavBar>
               {pathname === '/' + item.key ? children : null}
             </TabBar.Item>
           ))}
