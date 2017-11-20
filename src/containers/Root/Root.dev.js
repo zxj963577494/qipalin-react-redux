@@ -20,7 +20,6 @@ export default class Root extends Component {
                 <Route
                   exec
                   path="/article/:id"
-                  type={123}
                   component={ArticleDetail}
                 />
                 <App history={store.history}>

@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getArticlesRequest } from '../../actions'
+import { getJokesRequest } from '../../actions'
 
 class Joke extends Component {
   componentDidMount() {
-    //this.props.getArticles({})
+    this.props.getJokes({})
   }
 
   render() {
+    const { jokes } = this.props
+    console.log(jokes)
     return (
       <div>
         <h1>Joke</h1>
@@ -19,20 +21,18 @@ class Joke extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    articles: state.root.articles,
+    jokes: state.root.jokes
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getPosts: payload => {
-      dispatch(getArticlesRequest(payload))
+    getJokes: payload => {
+      dispatch(getJokesRequest(payload))
     }
   }
 }
 
-Joke.propTypes = {
-  
-}
+Joke.propTypes = {}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Joke)

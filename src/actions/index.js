@@ -5,6 +5,9 @@ import {
   GET_ARTICLE_DETAIL_REQUEST,
   GET_ARTICLE_DETAIL_SUCCESS,
   GET_ARTICLE_DETAIL_FAILED,
+  GET_JOKES_REQUEST,
+  GET_JOKES_SUCCESS,
+  GET_JOKES_FAILED,
   GET_STICKY_ARTICLES_REQUEST,
   GET_STICKY_ARTICLES_SUCCESS,
   GET_STICKY_ARTICLES_FAILED,
@@ -21,6 +24,18 @@ export const getArticlesSuccess = function(payload) {
 
 export const getArticlesFailed = function(payload) {
   return { type: GET_ARTICLES_FAILED, payload }
+}
+
+export const getJokesRequest = function(payload) {
+  return { type: GET_JOKES_REQUEST, payload }
+}
+
+export const getJokesSuccess = function(payload) {
+  return { type: GET_JOKES_SUCCESS, payload }
+}
+
+export const getJokesFailed = function(payload) {
+  return { type: GET_JOKES_FAILED, payload }
 }
 
 export const getArticleDetailRequest = function(payload) {
