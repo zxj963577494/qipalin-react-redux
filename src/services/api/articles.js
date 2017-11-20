@@ -16,7 +16,7 @@ export function getArticles(payload) {
 
 // 获取置顶的文章
 export function getStickyArticles() {
-  return http.get(api.POSTS, { params: { sticky: true, per_page: 5, page: 1 } })
+  return http.get(api.POSTS, { params: { sticky: true, per_page: 10, page: 1 } })
 }
 
 // 获取详细文章

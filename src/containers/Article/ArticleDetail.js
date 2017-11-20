@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ActivityIndicator } from 'antd-mobile';
 import { getArticleDetailRequest } from '../../actions'
-import { MyListView } from '../../components'
 
 class ArticleDetail extends Component {
   constructor(props) {

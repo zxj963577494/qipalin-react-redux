@@ -4,13 +4,13 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { Flex, WhiteSpace } from 'antd-mobile'
 import { getArticlesRequest, getStickyArticlesRequest } from '../../actions'
-import { MyCarousel, MyListView } from '../../components'
+import { MyCarousel, MyHomeListView } from '../../components'
 import styles from './Home.css'
 
 class Home extends Component {
   componentDidMount() {
     this.props.getStickyArticles({})
-    this.props.getArticles({per_page: 6})
+    this.props.getArticles({ page: 1 })
   }
 
   // 展示LOGO
@@ -44,7 +44,7 @@ class Home extends Component {
         </div>
         <WhiteSpace size="xs" />
         <div>
-          <MyListView articles={articles} navigateTo={navigateTo} />
+          <MyHomeListView articles={articles} navigateTo={navigateTo}/>
         </div>
       </div>
     )

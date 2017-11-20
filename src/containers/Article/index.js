@@ -7,12 +7,13 @@ import { MyListView } from '../../components'
 
 class Article extends Component {
   componentDidMount() {
-    this.props.getArticles({})
+    this.props.getArticles({ page: 1 })
   }
 
   render() {
+    const {articles, navigateTo, getArticles} = this.props
     return (
-      <MyListView articles={this.props.articles} navigateTo={this.props.navigateTo} />
+      <MyListView articles={articles} navigateTo={navigateTo} getArticles={getArticles}/>
     )
   }
 }
