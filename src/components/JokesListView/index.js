@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { ListView, PullToRefresh, ActivityIndicator } from 'antd-mobile'
 import fonts from '../../assets/font/font.css'
-import styles from './ListView.css'
 import utils from '../../utils/utils'
+import styles from './style.css'
 
-export default class MyListView extends Component {
+export default class JokesListView extends Component {
   constructor(props) {
     super(props)
     this.onEndReached = this.onEndReached.bind(this)
@@ -13,21 +13,22 @@ export default class MyListView extends Component {
   }
 
   onEndReached = event => {
-    if (this.props.articles.isFetching && !this.props.articles.isLoadMore) {
+    if (this.props.jokes.isFetching && !this.props.jokes.isLoadMore) {
       return
     }
-    const page = this.props.articles.page + 1
-    this.props.getArticles({ page: page })
+    const page = this.props.jokes.page + 1
+    this.props.getJokes({ page: page })
   }
 
   onRefresh = () => {
-    this.props.getArticles({ isRefreshing:true })
+    this.props.getJokes({ isRefreshing:true })
   }
 
   render() {
+    console.log(this.props.jokes)
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2
-    }).cloneWithRows(this.props.articles.list)
+    }).cloneWithRows(this.props.jokes.list)
     const separator = (sectionID, rowID) => (
       <div
         key={`${sectionID}-${rowID}`}
@@ -41,16 +42,14 @@ export default class MyListView extends Component {
       return (
         <div
           onClick={() => {
-            this.props.navigateTo('/article/' + rowData.id)
+            this.props.navigateTo('/detail/' + rowData.id)
           }}
           key={rowID}
           style={{ padding: '0 15px' }}
         >
-          <div className={styles['article-row']}>
-            <img src={rowData.thumbnail} alt="" />
-            <div className={styles['right']}>
-              <div className={styles['article-title']}>
-                {rowData.title.rendered}
+          <div className={styles['joke-row']}>
+            <div>
+              <div dangerouslySetInnerHTML={{__html: rowData.content.rendered}}>
               </div>
               <div className={styles.meta}>
                 <span>{utils.cutstr(rowData.date, 10, 1)}</span>
@@ -85,7 +84,7 @@ export default class MyListView extends Component {
     const fonter = () => {
       return (
         <div style={{ padding: 5, textAlign: 'center' }}>
-        {this.props.articles.isFetching ? (
+        {this.props.jokes.isFetching ? (
             <ActivityIndicator toast text="加载中..." />
           ) : (
             '到底了'
@@ -99,7 +98,7 @@ export default class MyListView extends Component {
         renderFooter={fonter}
         renderRow={row}
         renderSeparator={separator}
-        initialListSize={6}
+        initialListSize={3}
         pageSize={10}
         className="am-list"
         style={{
@@ -113,7 +112,7 @@ export default class MyListView extends Component {
         onEndReached={this.onEndReached}
         onEndReachedThreshold={100}
         pullToRefresh={<PullToRefresh
-          refreshing={this.props.articles.isRefreshing}
+          refreshing={this.props.jokes.isRefreshing}
           onRefresh={this.onRefresh}
         />}
       />
@@ -121,8 +120,8 @@ export default class MyListView extends Component {
   }
 }
 
-MyListView.propTypes = {
-  articles: PropTypes.object.isRequired,
+JokesListView.propTypes = {
+  jokes: PropTypes.object.isRequired,
   navigateTo: PropTypes.func.isRequired,
-  getArticles: PropTypes.func.isRequired
+  getJokes: PropTypes.func.isRequired
 }

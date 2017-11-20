@@ -2,10 +2,9 @@ import { put, fork, take, call } from 'redux-saga/effects'
 import {
   GET_ARTICLES_REQUEST,
   GET_STICKY_ARTICLES_REQUEST,
-  GET_ARTICLE_DETAIL_REQUEST
 } from '../constants/actionTypes'
 import * as action from '../actions'
-import { getArticles, getStickyArticles, getArticleDetail } from '../services/api'
+import { getArticles, getStickyArticles } from '../services/api'
 
 function* getArticlesWorker(payload) {
   try {
@@ -25,15 +24,6 @@ function* getStickyArticlesWorker() {
   }
 }
 
-function* getArticleDetailWorker(payload) {
-  try {
-    const response = yield call(getArticleDetail, payload)
-    yield put(action.getArticleDetailSuccess(response.data))
-  } catch (error) {
-    yield put(action.getArticleDetailSuccess(error))
-  }
-}
-
 function* watchStickyArticles() {
   while (true) {
     yield take(GET_STICKY_ARTICLES_REQUEST)
@@ -48,11 +38,4 @@ function* watchArticles() {
   }
 }
 
-function* watchArticleDetail() {
-  while (true) {
-    const { payload } = yield take(GET_ARTICLE_DETAIL_REQUEST)
-    yield fork(getArticleDetailWorker, payload)
-  }
-}
-
-export { watchArticles, watchStickyArticles, watchArticleDetail }
+export { watchArticles, watchStickyArticles }

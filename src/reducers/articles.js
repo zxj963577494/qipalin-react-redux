@@ -2,9 +2,6 @@ import {
   GET_ARTICLES_REQUEST,
   GET_ARTICLES_SUCCESS,
   GET_ARTICLES_FAILED,
-  GET_ARTICLE_DETAIL_REQUEST,
-  GET_ARTICLE_DETAIL_SUCCESS,
-  GET_ARTICLE_DETAIL_FAILED,
   GET_STICKY_ARTICLES_REQUEST,
   GET_STICKY_ARTICLES_SUCCESS,
   GET_STICKY_ARTICLES_FAILED
@@ -17,11 +14,6 @@ const initialArticlesState = {
   isRefreshing: false,
   page: 1,
   pre_page: 10
-}
-
-const initialArticleState = {
-  article: {},
-  isFetching: false
 }
 
 const initialStickyArticlesState = {
@@ -58,23 +50,6 @@ function articlesReducer(state = initialArticlesState, action) {
   }
 }
 
-function articleReducer(state = initialArticleState, action) {
-  switch (action.type) {
-    case GET_ARTICLE_DETAIL_REQUEST:
-      return { ...state, isFetching: true }
-    case GET_ARTICLE_DETAIL_SUCCESS:
-      return {
-        ...state,
-        article: action.payload[0],
-        isFetching: false
-      }
-    case GET_ARTICLE_DETAIL_FAILED:
-      return { ...state, isFetching: false }
-    default:
-      return { ...state, isFetching: false }
-  }
-}
-
 function stickyArticlesReducer(state = initialStickyArticlesState, action) {
   switch (action.type) {
     case GET_STICKY_ARTICLES_REQUEST:
@@ -97,4 +72,4 @@ function stickyArticlesReducer(state = initialStickyArticlesState, action) {
   }
 }
 
-export { articlesReducer, stickyArticlesReducer, articleReducer }
+export { articlesReducer, stickyArticlesReducer }

@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ActivityIndicator } from 'antd-mobile';
-import { getArticleDetailRequest } from '../../actions'
+import { getDetailRequest } from '../../actions'
 
-class ArticleDetail extends Component {
+class Detail extends Component {
   constructor(props) {
     super(props)
 
@@ -12,13 +12,13 @@ class ArticleDetail extends Component {
   }
 
   componentDidMount() {
-    this.props.getArticleDetail(this.props.match.params.id)
+    this.props.getDetail(this.props.match.params.id)
     console.log(this.props);
   }
 
   render() {
-    const {article, isFetching} = this.props.article
-    console.log(article)
+    const {detail, isFetching} = this.props.detail
+    console.log(detail)
     return (
       <div
         style={{ position: 'fixed', height: '93%', width: '100%', top: '7%' }}
@@ -26,7 +26,7 @@ class ArticleDetail extends Component {
           {isFetching ? (
             <ActivityIndicator toast text="加载中..." />
           ):''}
-        <h1>ArticleDetail</h1>
+        <h1>Detail</h1>
       </div>
     )
   }
@@ -34,21 +34,21 @@ class ArticleDetail extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    article: state.root.article
+    detail: state.root.detail
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getArticleDetail: (id) => {
-      dispatch(getArticleDetailRequest({include: id}))
+    getDetail: (id) => {
+      dispatch(getDetailRequest({include: id}))
     }
   }
 }
 
-ArticleDetail.propTypes = {
-  article: PropTypes.object.isRequied,
-  getArticleDetail: PropTypes.func.isRequied
+Detail.propTypes = {
+  detail: PropTypes.object,
+  getDetail: PropTypes.func
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArticleDetail)
+export default connect(mapStateToProps, mapDispatchToProps)(Detail)

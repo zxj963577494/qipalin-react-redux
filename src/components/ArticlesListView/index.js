@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { ListView, PullToRefresh, ActivityIndicator } from 'antd-mobile'
 import fonts from '../../assets/font/font.css'
-import utils from '../../utils/utils'
 import styles from './style.css'
+import utils from '../../utils/utils'
 
-export default class JokeListView extends Component {
+export default class ArticlesListView extends Component {
   constructor(props) {
     super(props)
     this.onEndReached = this.onEndReached.bind(this)
@@ -13,22 +13,21 @@ export default class JokeListView extends Component {
   }
 
   onEndReached = event => {
-    if (this.props.jokes.isFetching && !this.props.jokes.isLoadMore) {
+    if (this.props.articles.isFetching && !this.props.articles.isLoadMore) {
       return
     }
-    const page = this.props.jokes.page + 1
-    this.props.getJokes({ page: page })
+    const page = this.props.articles.page + 1
+    this.props.getArticles({ page: page })
   }
 
   onRefresh = () => {
-    this.props.getJokes({ isRefreshing:true })
+    this.props.getArticles({ isRefreshing:true })
   }
 
   render() {
-    console.log(this.props.jokes)
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2
-    }).cloneWithRows(this.props.jokes.list)
+    }).cloneWithRows(this.props.articles.list)
     const separator = (sectionID, rowID) => (
       <div
         key={`${sectionID}-${rowID}`}
@@ -42,14 +41,16 @@ export default class JokeListView extends Component {
       return (
         <div
           onClick={() => {
-            this.props.navigateTo('/article/' + rowData.id)
+            this.props.navigateTo('/detail/' + rowData.id)
           }}
           key={rowID}
           style={{ padding: '0 15px' }}
         >
-          <div className={styles['joke-row']}>
-            <div>
-              <div dangerouslySetInnerHTML={{__html: rowData.content.rendered}}>
+          <div className={styles['article-row']}>
+            <img src={rowData.thumbnail} alt="" />
+            <div className={styles['right']}>
+              <div className={styles['article-title']}>
+                {rowData.title.rendered}
               </div>
               <div className={styles.meta}>
                 <span>{utils.cutstr(rowData.date, 10, 1)}</span>
@@ -84,7 +85,7 @@ export default class JokeListView extends Component {
     const fonter = () => {
       return (
         <div style={{ padding: 5, textAlign: 'center' }}>
-        {this.props.jokes.isFetching ? (
+        {this.props.articles.isFetching ? (
             <ActivityIndicator toast text="加载中..." />
           ) : (
             '到底了'
@@ -98,7 +99,7 @@ export default class JokeListView extends Component {
         renderFooter={fonter}
         renderRow={row}
         renderSeparator={separator}
-        initialListSize={3}
+        initialListSize={6}
         pageSize={10}
         className="am-list"
         style={{
@@ -112,7 +113,7 @@ export default class JokeListView extends Component {
         onEndReached={this.onEndReached}
         onEndReachedThreshold={100}
         pullToRefresh={<PullToRefresh
-          refreshing={this.props.jokes.isRefreshing}
+          refreshing={this.props.articles.isRefreshing}
           onRefresh={this.onRefresh}
         />}
       />
@@ -120,8 +121,8 @@ export default class JokeListView extends Component {
   }
 }
 
-JokeListView.propTypes = {
-  jokes: PropTypes.object.isRequired,
+ArticlesListView.propTypes = {
+  articles: PropTypes.object.isRequired,
   navigateTo: PropTypes.func.isRequired,
-  getJokes: PropTypes.func.isRequired
+  getArticles: PropTypes.func.isRequired
 }

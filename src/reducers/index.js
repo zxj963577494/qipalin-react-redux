@@ -1,16 +1,15 @@
 import { combineReducers } from 'redux'
-import {
-  articlesReducer,
-  stickyArticlesReducer,
-  articleReducer
-} from './articles'
+import { articlesReducer, stickyArticlesReducer } from './articles'
 import { jokesReducer } from './jokes'
+import { picturesReducer } from './pictures'
+import { detailReducer } from './detail'
 import tabbarsReducer from './tabbars'
 
 const rootReducer = combineReducers({
   articles: articlesReducer,
   jokes: jokesReducer,
-  article: articleReducer,
+  pictures: picturesReducer,
+  detail: detailReducer,
   sticky: stickyArticlesReducer,
   tabbars: tabbarsReducer
 })

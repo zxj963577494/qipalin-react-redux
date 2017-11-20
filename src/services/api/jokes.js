@@ -1,10 +1,10 @@
 import * as http from '../../utils/http'
 import * as api from '../../api'
 
-// 获取文章列表
-export function getArticles(payload) {
+// 获取段子列表
+export function getJokes(payload) {
   const params = {
-    categories: 1,
+    categories: 2,
     per_page: 10,
     page: 1,
     orderby: 'date',
@@ -13,11 +13,3 @@ export function getArticles(payload) {
   }
   return http.get(api.POSTS, { params: params })
 }
-
-// 获取置顶的文章
-export function getStickyArticles() {
-  return http.get(api.POSTS, { params: { sticky: true, per_page: 10, page: 1 } })
-}
-
-
-

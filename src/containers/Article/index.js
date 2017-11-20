@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { getArticlesRequest } from '../../actions'
-import { MyListView } from '../../components'
+import { ArticlesListView } from '../../components'
 
 class Article extends Component {
   componentDidMount() {
@@ -13,7 +13,7 @@ class Article extends Component {
   render() {
     const {articles, navigateTo, getArticles} = this.props
     return (
-      <MyListView articles={articles} navigateTo={navigateTo} getArticles={getArticles}/>
+      <ArticlesListView articles={articles} navigateTo={navigateTo} getArticles={getArticles}/>
     )
   }
 }

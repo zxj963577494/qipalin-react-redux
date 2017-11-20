@@ -2,12 +2,15 @@ import {
   GET_ARTICLES_REQUEST,
   GET_ARTICLES_SUCCESS,
   GET_ARTICLES_FAILED,
-  GET_ARTICLE_DETAIL_REQUEST,
-  GET_ARTICLE_DETAIL_SUCCESS,
-  GET_ARTICLE_DETAIL_FAILED,
+  GET_DETAIL_REQUEST,
+  GET_DETAIL_SUCCESS,
+  GET_DETAIL_FAILED,
   GET_JOKES_REQUEST,
   GET_JOKES_SUCCESS,
   GET_JOKES_FAILED,
+  GET_PICTURES_REQUEST,
+  GET_PICTURES_SUCCESS,
+  GET_PICTURES_FAILED,
   GET_STICKY_ARTICLES_REQUEST,
   GET_STICKY_ARTICLES_SUCCESS,
   GET_STICKY_ARTICLES_FAILED,
@@ -38,16 +41,28 @@ export const getJokesFailed = function(payload) {
   return { type: GET_JOKES_FAILED, payload }
 }
 
-export const getArticleDetailRequest = function(payload) {
-  return { type: GET_ARTICLE_DETAIL_REQUEST, payload }
+export const getPicturesRequest = function(payload) {
+  return { type: GET_PICTURES_REQUEST, payload }
 }
 
-export const getArticleDetailSuccess = function(payload) {
-  return { type: GET_ARTICLE_DETAIL_SUCCESS, payload }
+export const getPicturesSuccess = function(payload) {
+  return { type: GET_PICTURES_SUCCESS, payload }
 }
 
-export const getArticleDetailFailed = function(payload) {
-  return { type: GET_ARTICLE_DETAIL_FAILED, payload }
+export const getPicturesFailed = function(payload) {
+  return { type: GET_PICTURES_FAILED, payload }
+}
+
+export const getDetailRequest = function(payload) {
+  return { type: GET_DETAIL_REQUEST, payload }
+}
+
+export const getDetailSuccess = function(payload) {
+  return { type: GET_DETAIL_SUCCESS, payload }
+}
+
+export const getDetailFailed = function(payload) {
+  return { type: GET_DETAIL_FAILED, payload }
 }
 
 export const getStickyArticlesRequest = function() {

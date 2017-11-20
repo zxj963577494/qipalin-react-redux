@@ -4,7 +4,7 @@ import Home from './Home'
 import Article from './Article'
 import Joke from './Joke'
 import Picture from './Picture'
-import ArticleDetail from './Article/ArticleDetail'
+import Detail from './Detail'
 
 export {
   Root,
@@ -13,5 +13,5 @@ export {
   Article,
   Joke,
   Picture,
-  ArticleDetail
+  Detail
 }
