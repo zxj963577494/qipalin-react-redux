@@ -85,7 +85,11 @@ export default class MyListView extends Component {
     const fonter = () => {
       return (
         <div style={{ padding: 5, textAlign: 'center' }}>
-        <ActivityIndicator toast text="加载中..." />
+        {this.props.articles.isFetching ? (
+            <ActivityIndicator toast text="加载中..." />
+          ) : (
+            '到底了'
+          )}
         </div>
       )
     }

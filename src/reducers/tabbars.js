@@ -17,9 +17,9 @@ const initialState = [
   },
   {
     title: '段子',
-    key: 'duanzi',
-    icon: require('../assets/images/tar-duanzi.png'),
-    selectedIcon: require('../assets/images/tar-duanzi-on.png'),
+    key: 'joke',
+    icon: require('../assets/images/tar-joke.png'),
+    selectedIcon: require('../assets/images/tar-joke-on.png'),
     selected: false
   },
   {

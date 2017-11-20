@@ -3,15 +3,15 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getArticlesRequest } from '../../actions'
 
-class Duanzi extends Component {
+class Joke extends Component {
   componentDidMount() {
-    this.props.getArticles({})
+    //this.props.getArticles({})
   }
 
   render() {
     return (
       <div>
-        <h1>Duanzi</h1>
+        <h1>Joke</h1>
       </div>
     )
   }
@@ -31,8 +31,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-Duanzi.propTypes = {
+Joke.propTypes = {
   
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Duanzi)
+export default connect(mapStateToProps, mapDispatchToProps)(Joke)

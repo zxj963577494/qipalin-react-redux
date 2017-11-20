@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom'
 import { NavBar } from 'antd-mobile'
 //import DevTools from '../DevTools/DevTools'
 import routes from '../../routes'
-import { App, Home, Article, Duanzi, Picture, ArticleDetail } from '../index'
+import { App, Home, Article, Joke, Picture, ArticleDetail } from '../index'
 
 export default class Root extends Component {
   render() {
@@ -26,7 +26,7 @@ export default class Root extends Component {
                 <App history={store.history}>
                   <Route exec path="/home" component={Home} />
                   <Route exec path="/article" component={Article} />
-                  <Route exec path="/duanzi" component={Duanzi} />
+                  <Route exec path="/joke" component={Joke} />
                   <Route exec path="/picture" component={Picture} />
                 </App>
               </Switch>
