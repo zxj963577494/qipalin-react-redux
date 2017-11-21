@@ -32,7 +32,8 @@ class Home extends Component {
 
   // 展示轮播图
   renderCarousel() {
-    return <MyCarousel content={this.props.sticky.list} />
+    const { navigateTo } = this.props
+    return <MyCarousel content={this.props.sticky.list} navigateTo={navigateTo}/>
   }
 
   render() {

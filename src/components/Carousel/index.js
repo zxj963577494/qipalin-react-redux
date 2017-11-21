@@ -11,15 +11,16 @@ let MyCarousel = props => {
       infinite
       selectedIndex={1}
       swipeSpeed={35}
-      beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-      afterChange={index => console.log('slide to', index)}
     >
       {props.content.map(item => (
-        <a key={item.id}>
+        <a
+          onClick={() => props.navigateTo(`/article/${item.id}`)}
+          key={item.id}
+        >
           <img
             src={item.thumbnail}
             alt={item.title.rendered}
-            style={{height:'200px',width: '100%'}}
+            style={{ height: '200px', width: '100%' }}
           />
         </a>
       ))}
@@ -29,6 +30,7 @@ let MyCarousel = props => {
 
 MyCarousel.propTypes = {
   content: PropTypes.array.isRequired,
+  navigateTo: PropTypes.func.isRequired
 }
 
 export default MyCarousel

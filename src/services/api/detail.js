@@ -7,7 +7,7 @@ export function getDetail(payload) {
     include: 1,
     ...payload
   }
-  if (payload.t === 'pictures') {
+  if (payload.t) {
     return http.get(api.PICTURE, { params: params })
   } else {
     return http.get(api.POSTS, { params: params })

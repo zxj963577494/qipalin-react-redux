@@ -7,12 +7,11 @@ import { getDetailRequest } from '../../actions'
 class Detail extends Component {
   constructor(props) {
     super(props)
-
     console.log(props)
   }
 
   componentDidMount() {
-    this.props.getDetail(this.props.match.params.id)
+    this.props.getDetail(this.props.match.params.id, this.props.match.path.includes('picture') ? 1 : 0)
     console.log(this.props);
   }
 
@@ -40,8 +39,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getDetail: (id) => {
-      dispatch(getDetailRequest({include: id}))
+    getDetail: (id, t) => {
+      dispatch(getDetailRequest({include: id, t: t}))
     }
   }
 }
