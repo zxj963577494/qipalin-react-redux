@@ -1,21 +1,36 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { ConnectedRouter as Router } from 'react-router-redux'
-import App from '../App'
+import { NavBar } from 'antd-mobile'
+import { App, Home, Article, Joke, Picture, Detail } from '../index'
 
 export default class Root extends Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     const { store } = this.props
     return (
       <Provider store={store}>
-        <Router history={store.history} onUpdate={this.onUpdate}>
-          <Route path="/" component={App} />
+      <div>
+        <Router history={store.history}>
+          <div>
+            <NavBar
+              style={{ position: 'fixed', width: '100%', height: '7%' }}
+            >
+              奇葩林
+            </NavBar>
+            <Switch>
+              <Route exec path="/detail/:id" component={Detail} />
+              <App history={store.history}>
+                <Route exec path="/home" component={Home} />
+                <Route exec path="/article" component={Article} />
+                <Route exec path="/joke" component={Joke} />
+                <Route exec path="/picture" component={Picture} />
+              </App>
+            </Switch>
+          </div>
         </Router>
-      </Provider>
+      </div>
+    </Provider>
     )
   }
 }
