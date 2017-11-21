@@ -23,15 +23,15 @@ export default class HomeListView extends Component {
       return (
         <div
           onClick={() => {
-            this.props.navigateTo('/detail/' + rowData.id)
+            this.props.navigateTo('/article/' + rowData.id)
           }}
           key={rowID}
           style={{ padding: '0 15px' }}
         >
-          <div className={styles['article-row']}>
+          <div className={styles['articles-row']}>
             <img src={rowData.thumbnail} alt="" />
             <div className={styles['right']}>
-              <div className={styles['article-title']}>
+              <div className={styles['articles-title']}>
                 {rowData.title.rendered}
               </div>
               <div className={styles.meta}>
@@ -67,30 +67,33 @@ export default class HomeListView extends Component {
     const fonter = () => {
       return (
         <div style={{ padding: 5, textAlign: 'center' }}>
-          {this.props.articles.isFetching ? (
-            <ActivityIndicator toast text="加载中..." />
-          ) : (
-            '到底了'
-          )}
+          {this.props.articles.isFetching ? '' : '到底了'}
         </div>
       )
     }
     return (
-      <ListView
-        dataSource={dataSource}
-        initialListSize={6}
-        renderFooter={fonter}
-        renderRow={row}
-        useBodyScroll
-        renderSeparator={separator}
-        className="am-list"
-        pageSize={4}
-      />
+      <div>
+        <ActivityIndicator
+          toast
+          text="加载中..."
+          animating={this.props.articles.isFetching}
+        />
+        <ListView
+          dataSource={dataSource}
+          initialListSize={6}
+          renderFooter={fonter}
+          renderRow={row}
+          useBodyScroll
+          renderSeparator={separator}
+          className="am-list"
+          pageSize={4}
+        />
+      </div>
     )
   }
 }
 
 HomeListView.propTypes = {
   articles: PropTypes.object.isRequired,
-  navigateTo: PropTypes.func.isRequired,
+  navigateTo: PropTypes.func.isRequired
 }

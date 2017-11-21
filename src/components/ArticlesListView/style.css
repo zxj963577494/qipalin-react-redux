@@ -1,21 +1,21 @@
-.article-row {
+.articles-row {
     display: flex;
     align-items: center;
     padding: 15px 0;
 }
 
-.article-row img {
+.articles-row img {
     height: 75px;
     width: 100px;
     border-radius: 5%;
 }
 
-.article-row .right {
+.articles-row .right {
     flex: 1;
     margin-left: 10px;
 }
 
-.article-title {
+.articles-title {
     margin-bottom: 8px;
     height: 36px;
     font-weight: bold;

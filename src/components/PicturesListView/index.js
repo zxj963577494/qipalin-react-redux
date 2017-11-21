@@ -42,7 +42,7 @@ export default class PicturesListView extends Component {
       return (
         <div
           onClick={() => {
-            this.props.navigateTo('/detail/' + rowData.id)
+            this.props.navigateTo('/picture/' + rowData.id)
           }}
           key={rowID}
           style={{ padding: '0 15px' }}
@@ -84,13 +84,12 @@ export default class PicturesListView extends Component {
     const fonter = () => {
       return (
         <div style={{ padding: 5, textAlign: 'center' }}>
-          {this.props.pictures.isFetching ? (
-            <ActivityIndicator toast text="加载中..." />
-          ) : (
-            '到底了'
-          )}
+          {this.props.pictures.isFetching ? '' : '到底了'}
         </div>
       )
+    }
+    if (this.props.pictures.isFetching) {
+      return <ActivityIndicator toast text="加载中..." />
     }
     return (
       <ListView

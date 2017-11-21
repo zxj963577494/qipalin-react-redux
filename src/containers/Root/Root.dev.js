@@ -20,7 +20,9 @@ export default class Root extends Component {
                 奇葩林
               </NavBar>
               <Switch>
-                <Route exec path="/detail/:id" component={Detail} />
+                <Route exec path="/article/:id" component={Detail} />
+                <Route exec path="/joke/:id" component={Detail} />
+                <Route exec path="/picture/:id" component={Detail} />
                 <App history={store.history}>
                   <Route exec path="/home" component={Home} />
                   <Route exec path="/articles" component={Articles} />

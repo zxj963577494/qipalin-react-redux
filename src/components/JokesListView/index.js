@@ -21,7 +21,7 @@ export default class JokesListView extends Component {
   }
 
   onRefresh = () => {
-    this.props.getJokes({ isRefreshing:true })
+    this.props.getJokes({ isRefreshing: true })
   }
 
   render() {
@@ -42,15 +42,16 @@ export default class JokesListView extends Component {
       return (
         <div
           onClick={() => {
-            this.props.navigateTo('/detail/' + rowData.id)
+            this.props.navigateTo('/joke/' + rowData.id)
           }}
           key={rowID}
           style={{ padding: '0 15px' }}
         >
-          <div className={styles['joke-row']}>
+          <div className={styles['jokes-row']}>
             <div>
-              <div dangerouslySetInnerHTML={{__html: rowData.content.rendered}}>
-              </div>
+              <div
+                dangerouslySetInnerHTML={{ __html: rowData.content.rendered }}
+              />
               <div className={styles.meta}>
                 <span>{utils.cutstr(rowData.date, 10, 1)}</span>
                 <span
@@ -84,13 +85,12 @@ export default class JokesListView extends Component {
     const fonter = () => {
       return (
         <div style={{ padding: 5, textAlign: 'center' }}>
-        {this.props.jokes.isFetching ? (
-            <ActivityIndicator toast text="加载中..." />
-          ) : (
-            '到底了'
-          )}
+          {this.props.jokes.isFetching ? '' : '到底了'}
         </div>
       )
+    }
+    if (this.props.jokes.isFetching) {
+      return <ActivityIndicator toast text="加载中..." />
     }
     return (
       <ListView
@@ -111,10 +111,12 @@ export default class JokesListView extends Component {
         scrollRenderAheadDistance={500}
         onEndReached={this.onEndReached}
         onEndReachedThreshold={100}
-        pullToRefresh={<PullToRefresh
-          refreshing={this.props.jokes.isRefreshing}
-          onRefresh={this.onRefresh}
-        />}
+        pullToRefresh={
+          <PullToRefresh
+            refreshing={this.props.jokes.isRefreshing}
+            onRefresh={this.onRefresh}
+          />
+        }
       />
     )
   }
