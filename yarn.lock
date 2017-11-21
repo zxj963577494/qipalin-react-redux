@@ -339,17 +339,6 @@ autoprefixer@^6.3.1:
     postcss "^5.2.16"
     postcss-value-parser "^3.2.3"
 
-autoresponsive-core@^1.0.1:
-  version "1.0.1"
-  resolved "http://registry.npm.taobao.org/autoresponsive-core/download/autoresponsive-core-1.0.1.tgz#cbb77dffb5ee625fe3dae867671050632ba04916"
-
-autoresponsive-react@^1.1.22:
-  version "1.1.22"
-  resolved "http://registry.npm.taobao.org/autoresponsive-react/download/autoresponsive-react-1.1.22.tgz#93471bb42220b55284e2e9cd0fa30ed571cf732f"
-  dependencies:
-    autoresponsive-core "^1.0.1"
-    exenv "^1.2.0"
-
 aws-sign2@~0.6.0:
   version "0.6.0"
   resolved "http://registry.npm.taobao.org/aws-sign2/download/aws-sign2-0.6.0.tgz#14342dd38dbcc94d0e5b87d763cd63612c0e794f"
@@ -4091,13 +4080,9 @@ lodash.isarguments@^3.0.0:
   version "3.1.0"
   resolved "http://registry.npm.taobao.org/lodash.isarguments/download/lodash.isarguments-3.1.0.tgz#2f573d85c6a24289ff00663b491c1d338ff3458a"
 
-lodash.isarray@3.0.4, lodash.isarray@^3.0.0:
+lodash.isarray@^3.0.0:
   version "3.0.4"
   resolved "http://registry.npm.taobao.org/lodash.isarray/download/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
-
-lodash.isfinite@3.2.0:
-  version "3.2.0"
-  resolved "http://registry.npm.taobao.org/lodash.isfinite/download/lodash.isfinite-3.2.0.tgz#aa69ffb93a37e82fab0ce18862655f9174ced339"
 
 lodash.keys@^3.1.2:
   version "3.1.2"
@@ -4518,10 +4503,6 @@ number-is-nan@^1.0.0:
 oauth-sign@~0.8.1, oauth-sign@~0.8.2:
   version "0.8.2"
   resolved "http://registry.npm.taobao.org/oauth-sign/download/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
-
-object-assign@4.0.1:
-  version "4.0.1"
-  resolved "http://registry.npm.taobao.org/object-assign/download/object-assign-4.0.1.tgz#99504456c3598b5cad4fc59c26e8a9bb107fe0bd"
 
 object-assign@4.1.1, object-assign@4.x, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
@@ -5458,14 +5439,6 @@ react-dom@^16.1.1:
 react-error-overlay@^3.0.0:
   version "3.0.0"
   resolved "http://registry.npm.taobao.org/react-error-overlay/download/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
-
-react-infinite@^0.12.1:
-  version "0.12.1"
-  resolved "http://registry.npm.taobao.org/react-infinite/download/react-infinite-0.12.1.tgz#74c5981f9ddd23f065f414cbb00c6d204bf7eda1"
-  dependencies:
-    lodash.isarray "3.0.4"
-    lodash.isfinite "3.2.0"
-    object-assign "4.0.1"
 
 react-json-tree@^0.11.0:
   version "0.11.0"

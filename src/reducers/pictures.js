@@ -28,6 +28,7 @@ function picturesReducer(state = initialPicturesState, action) {
         ...state,
         list: state.list.concat(
           action.payload.map(function(item) {
+            // eslint-disable-next-line
             var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i
             var img = item.content.rendered.match(srcReg)[1]
             if (img) {
