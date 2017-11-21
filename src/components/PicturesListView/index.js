@@ -13,22 +13,22 @@ export default class PicturesListView extends Component {
   }
 
   onEndReached = event => {
-    if (this.props.jokes.isFetching && !this.props.jokes.isLoadMore) {
+    if (this.props.pictures.isFetching && !this.props.pictures.isLoadMore) {
       return
     }
-    const page = this.props.jokes.page + 1
-    this.props.getJokes({ page: page })
+    const page = this.props.pictures.page + 1
+    this.props.getPictures({ page: page })
   }
 
   onRefresh = () => {
-    this.props.getJokes({ isRefreshing:true })
+    this.props.getPictures({ isRefreshing: true })
   }
 
   render() {
-    console.log(this.props.jokes)
+    console.log(this.props.pictures)
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2
-    }).cloneWithRows(this.props.jokes.list)
+    }).cloneWithRows(this.props.pictures.list)
     const separator = (sectionID, rowID) => (
       <div
         key={`${sectionID}-${rowID}`}
@@ -47,10 +47,10 @@ export default class PicturesListView extends Component {
           key={rowID}
           style={{ padding: '0 15px' }}
         >
-          <div className={styles['joke-row']}>
-            <div>
-              <div dangerouslySetInnerHTML={{__html: rowData.content.rendered}}>
-              </div>
+          <div className={styles['pictures-row']}>
+            <div className={styles['pictures-centent']}>
+              <div className={styles['pictures-title']}>{rowData.name}</div>
+              <img src={rowData.url} alt={rowData.name} />
               <div className={styles.meta}>
                 <span>{utils.cutstr(rowData.date, 10, 1)}</span>
                 <span
@@ -84,7 +84,7 @@ export default class PicturesListView extends Component {
     const fonter = () => {
       return (
         <div style={{ padding: 5, textAlign: 'center' }}>
-        {this.props.jokes.isFetching ? (
+          {this.props.pictures.isFetching ? (
             <ActivityIndicator toast text="加载中..." />
           ) : (
             '到底了'
@@ -98,7 +98,7 @@ export default class PicturesListView extends Component {
         renderFooter={fonter}
         renderRow={row}
         renderSeparator={separator}
-        initialListSize={3}
+        initialListSize={2}
         pageSize={10}
         className="am-list"
         style={{
@@ -111,17 +111,19 @@ export default class PicturesListView extends Component {
         scrollRenderAheadDistance={500}
         onEndReached={this.onEndReached}
         onEndReachedThreshold={100}
-        pullToRefresh={<PullToRefresh
-          refreshing={this.props.jokes.isRefreshing}
-          onRefresh={this.onRefresh}
-        />}
+        pullToRefresh={
+          <PullToRefresh
+            refreshing={this.props.pictures.isRefreshing}
+            onRefresh={this.onRefresh}
+          />
+        }
       />
     )
   }
 }
 
 PicturesListView.propTypes = {
-  jokes: PropTypes.object.isRequired,
+  pictures: PropTypes.object.isRequired,
   navigateTo: PropTypes.func.isRequired,
-  getJokes: PropTypes.func.isRequired
+  getPictures: PropTypes.func.isRequired
 }

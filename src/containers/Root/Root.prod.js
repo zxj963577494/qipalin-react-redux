@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 import { ConnectedRouter as Router } from 'react-router-redux'
 import { NavBar } from 'antd-mobile'
-import { App, Home, Article, Joke, Picture, Detail } from '../index'
+import { App, Home, Articles, Jokes, Pictures, Detail } from '../index'
 
 export default class Root extends Component {
   render() {
@@ -22,9 +22,9 @@ export default class Root extends Component {
               <Route exec path="/detail/:id" component={Detail} />
               <App history={store.history}>
                 <Route exec path="/home" component={Home} />
-                <Route exec path="/article" component={Article} />
-                <Route exec path="/joke" component={Joke} />
-                <Route exec path="/picture" component={Picture} />
+                <Route exec path="/articles" component={Articles} />
+                <Route exec path="/jokes" component={Jokes} />
+                <Route exec path="/pictures" component={Pictures} />
               </App>
             </Switch>
           </div>

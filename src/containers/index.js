@@ -1,17 +1,17 @@
 import Root from './Root'
 import App from './App'
 import Home from './Home'
-import Article from './Article'
-import Joke from './Joke'
-import Picture from './Picture'
+import Articles from './Articles'
+import Jokes from './Jokes'
+import Pictures from './Pictures'
 import Detail from './Detail'
 
 export {
   Root,
   App,
   Home,
-  Article,
-  Joke,
-  Picture,
+  Articles,
+  Jokes,
+  Pictures,
   Detail
 }

@@ -5,7 +5,7 @@ import { push } from 'react-router-redux'
 import { getArticlesRequest } from '../../actions'
 import { ArticlesListView } from '../../components'
 
-class Article extends Component {
+class Articles extends Component {
   componentDidMount() {
     this.props.getArticles({ page: 1 })
   }
@@ -35,10 +35,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-Article.propTypes = {
+Articles.propTypes = {
   articles: PropTypes.object.isRequired,
   getArticles: PropTypes.func.isRequired,
   navigateTo: PropTypes.func.isRequired,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Article)
+export default connect(mapStateToProps, mapDispatchToProps)(Articles)
