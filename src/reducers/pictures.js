@@ -44,7 +44,6 @@ function picturesReducer(state = initialPicturesState, action) {
               item.url = '../../images/logo-128.jpg'
             }
             item.name = item.title.rendered
-            item.id = item.id
             return item
           })
         ),

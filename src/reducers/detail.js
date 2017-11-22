@@ -16,7 +16,10 @@ function detailReducer(state = initialDetailState, action) {
     case GET_DETAIL_SUCCESS:
       return {
         ...state,
-        detail: action.payload[0],
+        detail: action.payload.map((item) => {
+          item.name = item.title.rendered
+          return item
+        })[0],
         isFetching: false
       }
     case GET_DETAIL_FAILED:

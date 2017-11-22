@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Carousel } from 'antd-mobile'
-import styles from './Carousel.css'
+import styles from './style.css'
 
 let MyCarousel = props => {
   return (
