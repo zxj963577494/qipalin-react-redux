@@ -1,4 +1,4 @@
-import { fork } from 'redux-saga/effects'
+import { fork, all } from 'redux-saga/effects'
 import {
   watchArticles,
   watchStickyArticles
@@ -8,11 +8,11 @@ import { watchPictures } from './picturesSaga'
 import { watchDetail } from './detailSaga'
 
 export default function* rootSaga() {
-  yield [
+  yield all([
     fork(watchArticles),
     fork(watchStickyArticles),
     fork(watchDetail),
     fork(watchJokes),
     fork(watchPictures)
-  ]
+  ])
 }
