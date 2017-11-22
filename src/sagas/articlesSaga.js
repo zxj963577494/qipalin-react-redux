@@ -8,6 +8,7 @@ import { getArticles, getStickyArticles } from '../services/api'
 
 function* getArticlesWorker(payload) {
   try {
+    yield put(action.setNavBar({ title: '奇葩林', isCanBack: false }))
     const response = yield call(getArticles, payload)
     yield put(action.getArticlesSuccess(response.data))
   } catch (error) {

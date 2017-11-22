@@ -14,7 +14,8 @@ import {
   GET_STICKY_ARTICLES_REQUEST,
   GET_STICKY_ARTICLES_SUCCESS,
   GET_STICKY_ARTICLES_FAILED,
-  CHANGE_TABBAR
+  CHANGE_TABBAR,
+  SET_NAVBAR
 } from '../constants/actionTypes'
 
 export const getArticlesRequest = function(payload) {
@@ -79,4 +80,8 @@ export const getStickyArticlesFailed = function(payload) {
 
 export const changeTabBar = function(payload) {
   return { type: CHANGE_TABBAR, payload }
+}
+
+export const setNavBar = function(payload) {
+  return { type: SET_NAVBAR, payload }
 }

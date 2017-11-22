@@ -5,6 +5,7 @@ import { getJokes } from '../services/api'
 
 function* getJokesWorker(payload) {
   try {
+    yield put(action.setNavBar({ title: '奇葩林', isCanBack: false }))
     const response = yield call(getJokes, payload)
     yield put(action.getJokesSuccess(response.data))
   } catch (error) {

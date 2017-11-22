@@ -5,6 +5,7 @@ import { getPictures } from '../services/api'
 
 function* getPicturesWorker(payload) {
   try {
+    yield put(action.setNavBar({ title: '奇葩林', isCanBack: false }))
     const response = yield call(getPictures, payload)
     yield put(action.getPicturesSuccess(response.data))
   } catch (error) {
