@@ -9,17 +9,18 @@ import { App, Home, Articles, Jokes, Pictures, Detail } from '../index'
 class Root extends Component {
   render() {
     const { store } = this.props
+    const history = store.history
     return (
       <Provider store={store}>
         <div>
-          <Router history={store.history}>
+          <Router history={history}>
             <div>
-              <MyNavBar navbar={this.props.navbar} />
+              <MyNavBar navbar={this.props.navbar} history={history} />
               <Switch>
                 <Route exec path="/article/:id" component={Detail} />
                 <Route exec path="/joke/:id" component={Detail} />
                 <Route exec path="/picture/:id" component={Detail} />
-                <App history={store.history}>
+                <App history={history}>
                   <Route exec path="/home" component={Home} />
                   <Route exec path="/articles" component={Articles} />
                   <Route exec path="/jokes" component={Jokes} />
