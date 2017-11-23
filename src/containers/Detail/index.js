@@ -18,9 +18,7 @@ class Detail extends Component {
     const { detail, isFetching } = this.props.detail
     console.log(this.props.detail)
     return (
-      <div
-        style={{ position: 'fixed', height: '93%', width: '100%', top: '7%' }}
-      >
+      <div className={styles.content}>
         {isFetching ? <ActivityIndicator toast text="加载中..." /> : ''}
         <Content content={detail} />
       </div>
