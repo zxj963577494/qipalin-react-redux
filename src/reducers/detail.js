@@ -25,7 +25,7 @@ function detailReducer(state = initialDetailState, action) {
     case GET_DETAIL_FAILED:
       return { ...state, isFetching: false }
     default:
-      return { ...state, isFetching: false }
+      return state
   }
 }
 

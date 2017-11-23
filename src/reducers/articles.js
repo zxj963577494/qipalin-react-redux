@@ -46,7 +46,7 @@ function articlesReducer(state = initialArticlesState, action) {
     case GET_ARTICLES_FAILED:
       return { ...state, isFetching: false, isRefreshing: false }
     default:
-      return { ...state, isFetching: false, isRefreshing: false }
+      return state
   }
 }
 
@@ -68,7 +68,7 @@ function stickyArticlesReducer(state = initialStickyArticlesState, action) {
     case GET_STICKY_ARTICLES_FAILED:
       return { ...state, isFetching: false }
     default:
-      return { ...state, isFetching: false }
+      return state
   }
 }
 

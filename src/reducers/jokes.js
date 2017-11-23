@@ -33,7 +33,7 @@ function jokesReducer(state = initialJokesState, action) {
     case GET_JOKES_FAILED:
       return { ...state, isFetching: false, isRefreshing: false }
     default:
-      return { ...state, isFetching: false, isRefreshing: false }
+      return state
   }
 }
 

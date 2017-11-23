@@ -54,7 +54,7 @@ function picturesReducer(state = initialPicturesState, action) {
     case GET_PICTURES_FAILED:
       return { ...state, isFetching: false, isRefreshing: false }
     default:
-      return { ...state, isFetching: false, isRefreshing: false }
+      return state
   }
 }
 
