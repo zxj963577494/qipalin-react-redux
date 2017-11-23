@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import { Flex } from 'antd-mobile';
 import { getArticlesRequest } from '../../actions'
 import { ArticlesListView, MyActivityIndicator } from '../../components'
 
