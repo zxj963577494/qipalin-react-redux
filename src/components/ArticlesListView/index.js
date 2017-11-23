@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ListView, PullToRefresh, ActivityIndicator } from 'antd-mobile'
 import fonts from '../../assets/font/font.css'
 import styles from './style.css'
-import utils from '../../utils/utils'
+import {cutstr} from '../../utils/utils'
 
 export default class ArticlesListView extends Component {
   constructor(props) {
@@ -53,7 +53,7 @@ export default class ArticlesListView extends Component {
                 {rowData.title.rendered}
               </div>
               <div className={styles.meta}>
-                <span>{utils.cutstr(rowData.date, 10, 1)}</span>
+                <span>{cutstr(rowData.date, 10, 1)}</span>
                 <span
                   className={
                     fonts.iconfont + ' ' + fonts['icon-attention_light']

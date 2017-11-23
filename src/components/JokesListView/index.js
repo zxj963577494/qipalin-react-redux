@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { ListView, PullToRefresh, ActivityIndicator } from 'antd-mobile'
+import {cutstr} from '../../utils/utils'
 import fonts from '../../assets/font/font.css'
-import utils from '../../utils/utils'
 import styles from './style.css'
 
 export default class JokesListView extends Component {
@@ -53,7 +53,7 @@ export default class JokesListView extends Component {
                 dangerouslySetInnerHTML={{ __html: rowData.content.rendered }}
               />
               <div className={styles.meta}>
-                <span>{utils.cutstr(rowData.date, 10, 1)}</span>
+                <span>{cutstr(rowData.date, 10, 1)}</span>
                 <span
                   className={
                     fonts.iconfont + ' ' + fonts['icon-attention_light']
