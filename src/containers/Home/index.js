@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { Flex, WhiteSpace } from 'antd-mobile'
 import { getArticlesRequest, getStickyArticlesRequest } from '../../actions'
-import { MyCarousel, HomeListView } from '../../components'
+import { MyCarousel, HomeListView, MyActivityIndicator } from '../../components'
 import styles from './Home.css'
 
 class Home extends Component {
@@ -33,19 +33,22 @@ class Home extends Component {
   // 展示轮播图
   renderCarousel() {
     const { navigateTo } = this.props
-    return <MyCarousel content={this.props.sticky.list} navigateTo={navigateTo}/>
+    return (
+      <MyCarousel content={this.props.sticky.list} navigateTo={navigateTo} />
+    )
   }
 
   render() {
     const { sticky, articles, navigateTo } = this.props
     return (
       <div>
+        <MyActivityIndicator isFetching={articles.isFetching} />
         <div className={styles.header}>
           {sticky.isShowLogo ? this.renderLogo(sticky) : this.renderCarousel()}
         </div>
         <WhiteSpace size="xs" />
         <div>
-          <HomeListView articles={articles} navigateTo={navigateTo}/>
+          <HomeListView articles={articles} navigateTo={navigateTo} />
         </div>
       </div>
     )
@@ -78,7 +81,7 @@ Home.propTypes = {
   articles: PropTypes.object.isRequired,
   getArticles: PropTypes.func.isRequired,
   getStickyArticles: PropTypes.func.isRequired,
-  navigateTo: PropTypes.func.isRequired,
+  navigateTo: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

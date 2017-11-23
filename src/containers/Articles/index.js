@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
+import { Flex } from 'antd-mobile';
 import { getArticlesRequest } from '../../actions'
-import { ArticlesListView } from '../../components'
+import { ArticlesListView, MyActivityIndicator } from '../../components'
 
 class Articles extends Component {
   componentDidMount() {
@@ -11,16 +12,23 @@ class Articles extends Component {
   }
 
   render() {
-    const {articles, navigateTo, getArticles} = this.props
-    return (
-      <ArticlesListView articles={articles} navigateTo={navigateTo} getArticles={getArticles}/>
-    )
+    const { articles, navigateTo, getArticles } = this.props
+    return [
+      <div style={{height:'100%'}}>
+        <MyActivityIndicator isFetching={articles.isFetching} />
+        <ArticlesListView
+          articles={articles}
+          navigateTo={navigateTo}
+          getArticles={getArticles}
+        />
+      </div>
+    ]
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    articles: state.root.articles,
+    articles: state.root.articles
   }
 }
 
@@ -38,7 +46,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 Articles.propTypes = {
   articles: PropTypes.object.isRequired,
   getArticles: PropTypes.func.isRequired,
-  navigateTo: PropTypes.func.isRequired,
+  navigateTo: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Articles)

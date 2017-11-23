@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { ListView, ActivityIndicator } from 'antd-mobile'
-import {cutstr} from '../../utils/utils'
+import { ListView } from 'antd-mobile'
+import { cutstr } from '../../utils/utils'
 import fonts from '../../assets/font/font.css'
 import styles from '../ArticlesListView/style.css'
 
@@ -73,23 +73,16 @@ export default class HomeListView extends Component {
       )
     }
     return (
-      <div>
-        <ActivityIndicator
-          toast
-          text="加载中..."
-          animating={this.props.articles.isFetching}
-        />
-        <ListView
-          dataSource={dataSource}
-          initialListSize={6}
-          renderFooter={fonter}
-          renderRow={row}
-          useBodyScroll
-          renderSeparator={separator}
-          className="am-list"
-          pageSize={4}
-        />
-      </div>
+      <ListView
+        dataSource={dataSource}
+        initialListSize={6}
+        renderFooter={fonter}
+        renderRow={row}
+        useBodyScroll
+        renderSeparator={separator}
+        className="am-list"
+        pageSize={4}
+      />
     )
   }
 }

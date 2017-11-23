@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { ListView, PullToRefresh, ActivityIndicator } from 'antd-mobile'
+import { ListView, PullToRefresh } from 'antd-mobile'
 import fonts from '../../assets/font/font.css'
 import styles from './style.css'
 import {cutstr} from '../../utils/utils'
@@ -87,14 +87,6 @@ export default class ArticlesListView extends Component {
         <div style={{ padding: 5, textAlign: 'center' }}>
           {this.props.articles.isFetching ? '' : '到底了'}
         </div>
-      )
-    }
-    if (this.props.articles.isFetching) {
-      return (
-        <ActivityIndicator
-          toast
-          text="加载中..."
-        />
       )
     }
     return (

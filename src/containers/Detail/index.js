@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { ActivityIndicator } from 'antd-mobile'
 import { getDetailRequest } from '../../actions'
-import { Content } from '../../components'
+import { Content, MyActivityIndicator } from '../../components'
 import styles from './style.css'
 
 class Detail extends Component {
@@ -19,7 +18,7 @@ class Detail extends Component {
     console.log(this.props.detail)
     return (
       <div className={styles.content}>
-        {isFetching ? <ActivityIndicator toast text="加载中..." /> : ''}
+        <MyActivityIndicator isFetching={isFetching} />
         <Content content={detail} />
       </div>
     )

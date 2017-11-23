@@ -6,6 +6,7 @@ import ArticlesListView from './ArticlesListView'
 import JokesListView from './JokesListView'
 import PicturesListView from './PicturesListView'
 import Content from './Content'
+import MyActivityIndicator from './ActivityIndicator'
 
 export {
   MyTabBar,
@@ -15,5 +16,6 @@ export {
   HomeListView,
   JokesListView,
   PicturesListView,
-  Content
+  Content,
+  MyActivityIndicator
 }

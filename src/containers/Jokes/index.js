@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import {JokesListView} from '../../components'
 import { getJokesRequest } from '../../actions'
+import { JokesListView, MyActivityIndicator } from '../../components'
 
 class Jokes extends Component {
   componentDidMount() {
@@ -11,9 +11,16 @@ class Jokes extends Component {
   }
 
   render() {
-    const { jokes,navigateTo,getJokes } = this.props
+    const { jokes, navigateTo, getJokes } = this.props
     return (
-      <JokesListView jokes={jokes} navigateTo={navigateTo} getJokes={getJokes}/>
+      <div style={{ height: '100%' }}>
+        <MyActivityIndicator isFetching={jokes.isFetching} />
+        <JokesListView
+          jokes={jokes}
+          navigateTo={navigateTo}
+          getJokes={getJokes}
+        />
+      </div>
     )
   }
 }
@@ -38,7 +45,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 Jokes.propTypes = {
   jokes: PropTypes.object.isRequired,
   getJokes: PropTypes.func.isRequired,
-  navigateTo: PropTypes.func.isRequired,
+  navigateTo: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Jokes)

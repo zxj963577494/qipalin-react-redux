@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { getPicturesRequest } from '../../actions'
-import { PicturesListView } from '../../components'
+import { PicturesListView, MyActivityIndicator } from '../../components'
 
 class Picture extends Component {
   componentDidMount() {
@@ -13,11 +13,14 @@ class Picture extends Component {
   render() {
     const { pictures, navigateTo, getPictures } = this.props
     return (
-      <PicturesListView
-        pictures={pictures}
-        navigateTo={navigateTo}
-        getPictures={getPictures}
-      />
+      <div style={{ height: '100%' }}>
+        <MyActivityIndicator isFetching={pictures.isFetching} />
+        <PicturesListView
+          pictures={pictures}
+          navigateTo={navigateTo}
+          getPictures={getPictures}
+        />
+      </div>
     )
   }
 }

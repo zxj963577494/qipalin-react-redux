@@ -1,7 +1,7 @@
 import { put, fork, take, call } from 'redux-saga/effects'
 import {
   GET_ARTICLES_REQUEST,
-  GET_STICKY_ARTICLES_REQUEST,
+  GET_STICKY_ARTICLES_REQUEST
 } from '../constants/actionTypes'
 import * as action from '../actions'
 import { getArticles, getStickyArticles } from '../services/api'
