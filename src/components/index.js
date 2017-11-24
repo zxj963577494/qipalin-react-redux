@@ -6,6 +6,7 @@ import ArticlesListView from './ArticlesListView'
 import JokesListView from './JokesListView'
 import PicturesListView from './PicturesListView'
 import Content from './Content'
+import Comments from './Comments'
 import MyActivityIndicator from './ActivityIndicator'
 
 export {
@@ -17,5 +18,6 @@ export {
   JokesListView,
   PicturesListView,
   Content,
-  MyActivityIndicator
+  Comments,
+  MyActivityIndicator,
 }

@@ -11,6 +11,9 @@ import {
   GET_PICTURES_REQUEST,
   GET_PICTURES_SUCCESS,
   GET_PICTURES_FAILED,
+  GET_COMMENTS_REQUEST,
+  GET_COMMENTS_SUCCESS,
+  GET_COMMENTS_FAILED,
   GET_STICKY_ARTICLES_REQUEST,
   GET_STICKY_ARTICLES_SUCCESS,
   GET_STICKY_ARTICLES_FAILED,
@@ -76,6 +79,18 @@ export const getStickyArticlesSuccess = function(payload) {
 
 export const getStickyArticlesFailed = function(payload) {
   return { type: GET_STICKY_ARTICLES_FAILED, payload }
+}
+
+export const getCommentsRequest = function(payload) {
+  return { type: GET_COMMENTS_REQUEST, payload }
+}
+
+export const getCommentsSuccess = function(payload) {
+  return { type: GET_COMMENTS_SUCCESS, payload }
+}
+
+export const getCommentsFailed = function(payload) {
+  return { type: GET_COMMENTS_FAILED, payload }
 }
 
 export const changeTabBar = function(payload) {
