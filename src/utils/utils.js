@@ -27,6 +27,7 @@ export function pcToMobile(value) {
   if (value) {
     return value.replace(/target='_blank'/g, '')
         .replace(/target="_blank"/g, '')
-        .replace(/style="width: (\w+)px; height: (\w+)px;"/g, 'style="width:100%;height:$1px"')
+        .replace(/style="width: (\d+)px; height: (\d+)px;"/g, 'style="width:100%;height:$1px"')
+        .replace(/width="(\d+)"/g, 'width="100%"')
   }
 }
