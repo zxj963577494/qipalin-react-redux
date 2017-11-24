@@ -30,11 +30,13 @@ class Detail extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  const list = state.root.comments.list.filter(item => {
+    return item.post.toString() === ownProps.match.params.id
+  })
+  state.root.comments.list = list
   return {
     detail: state.root.detail,
-    comments: state.root.detail.detail.id
-      ? state.root.comments.list.filter(x => x.post === state.root.detail.detail.id)
-      : []
+    comments: state.root.comments
   }
 }
 
@@ -52,7 +54,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 Detail.propTypes = {
   detail: PropTypes.object.isRequired,
   getDetail: PropTypes.func.isRequired,
-  comments: PropTypes.object.isRequired,
   getComments: PropTypes.func.isRequired
 }
 

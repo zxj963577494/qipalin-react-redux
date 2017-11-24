@@ -7,7 +7,6 @@ import styles from '../ArticlesListView/style.css'
 
 export default class HomeListView extends Component {
   render() {
-    console.log(this.props)
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2
     }).cloneWithRows(this.props.articles.list)
