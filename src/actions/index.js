@@ -17,6 +17,9 @@ import {
   GET_STICKY_ARTICLES_REQUEST,
   GET_STICKY_ARTICLES_SUCCESS,
   GET_STICKY_ARTICLES_FAILED,
+  POST_LOGIN_REQUEST,
+  POST_LOGIN_SUCCESS,
+  POST_LOGIN_FAILED,
   CHANGE_TABBAR,
   SET_NAVBAR
 } from '../constants/actionTypes'
@@ -91,6 +94,18 @@ export const getCommentsSuccess = function(payload) {
 
 export const getCommentsFailed = function(payload) {
   return { type: GET_COMMENTS_FAILED, payload }
+}
+
+export const postLoginRequest = function(payload) {
+  return { type: POST_LOGIN_REQUEST, payload }
+}
+
+export const postLoginSuccess = function(payload) {
+  return { type: POST_LOGIN_SUCCESS, payload }
+}
+
+export const postLoginFailed = function(payload) {
+  return { type: POST_LOGIN_FAILED, payload }
 }
 
 export const changeTabBar = function(payload) {

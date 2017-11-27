@@ -3,6 +3,7 @@ import { getJokes } from './jokes'
 import { getPictures } from './pictures'
 import { getDetail } from './detail'
 import { getComments } from './comments'
+import { postLogin } from './login'
 
 export {
   getArticles,
@@ -10,5 +11,6 @@ export {
   getDetail,
   getJokes,
   getPictures,
-  getComments
+  getComments,
+  postLogin
 }

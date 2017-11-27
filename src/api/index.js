@@ -1,6 +1,7 @@
 import config from '../config'
 
 const BASE_URL = config.BASE_URL
+const BASE_URL_JWT = BASE_URL.BASE_URL_JWT
 
 // 文章
 export const POSTS = BASE_URL + '/posts'
@@ -17,7 +18,7 @@ export const USERS = BASE_URL + '/users'
 // 设置
 export const SETTINGS = BASE_URL + '/settings'
 // 登录
-export const TOKEN = BASE_URL + '/token'
+export const LOGIN = BASE_URL_JWT + '/token'
 // 一周热点文章
 export const HOTWEEK = BASE_URL + '/hotpostthisweek'
 // 一月热点文章
