@@ -20,6 +20,9 @@ import {
   POST_LOGIN_REQUEST,
   POST_LOGIN_SUCCESS,
   POST_LOGIN_FAILED,
+  POST_LOGOUT_REQUEST,
+  POST_LOGOUT_SUCCESS,
+  POST_LOGOUT_FAILED,
   CHANGE_TABBAR,
   SET_NAVBAR
 } from '../constants/actionTypes'
@@ -106,6 +109,18 @@ export const postLoginSuccess = function(payload) {
 
 export const postLoginFailed = function(payload) {
   return { type: POST_LOGIN_FAILED, payload }
+}
+
+export const postLogoutRequest = function() {
+  return { type: POST_LOGOUT_REQUEST}
+}
+
+export const postLogoutSuccess = function() {
+  return { type: POST_LOGOUT_SUCCESS}
+}
+
+export const postLogoutFailed = function() {
+  return { type: POST_LOGOUT_FAILED}
 }
 
 export const changeTabBar = function(payload) {

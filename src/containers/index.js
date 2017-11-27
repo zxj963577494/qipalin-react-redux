@@ -6,6 +6,7 @@ import Jokes from './Jokes'
 import Pictures from './Pictures'
 import Detail from './Detail'
 import Login from './Login'
+import Account from './Account'
 
 export {
   Root,
@@ -15,5 +16,6 @@ export {
   Jokes,
   Pictures,
   Detail,
-  Login
+  Login,
+  Account
 }

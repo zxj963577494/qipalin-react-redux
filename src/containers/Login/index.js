@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createForm } from 'rc-form'
 import { Button, InputItem, WhiteSpace, Flex } from 'antd-mobile'
+import { push } from 'react-router-redux'
+import Cookies from 'universal-cookie'
 import { postLoginRequest } from '../../actions'
 import { MyActivityIndicator } from '../../components'
 import styles from './style.css'
@@ -32,16 +34,18 @@ class Login extends Component {
   }
 
   onSubmit = () => {
-    this.props.form.validateFields((error, value) => {
-      console.log(error, value)
-    })
     this.props.postLogin({
       username: this.state.username,
       password: this.state.password
     })
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const cookies = new Cookies()
+    if (cookies.get('token') && this.props.login.isLogin) {
+      push('/account')
+    }
+  }
 
   render() {
     const { getFieldProps, getFieldError } = this.props.form
