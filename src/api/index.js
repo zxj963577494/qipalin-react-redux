@@ -1,7 +1,7 @@
 import config from '../config'
 
 const BASE_URL = config.BASE_URL
-const BASE_URL_JWT = BASE_URL.BASE_URL_JWT
+const BASE_URL_JWT = config.BASE_URL_JWT
 
 // 文章
 export const POSTS = BASE_URL + '/posts'

@@ -5,3 +5,9 @@
   top: 7%;
   overflow: auto;
 }
+
+.error {
+  color: red;
+  margin-left: 10px;
+  line-height: 2;
+}

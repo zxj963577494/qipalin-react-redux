@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
 import { createForm } from 'rc-form'
-import { Button, InputItem, WhiteSpace, Toast } from 'antd-mobile'
+import { Button, InputItem, WhiteSpace, Flex } from 'antd-mobile'
 import { postLoginRequest } from '../../actions'
 import { MyActivityIndicator } from '../../components'
 import styles from './style.css'
@@ -12,7 +11,6 @@ class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      hasError: false,
       username: props.login.username,
       password: props.login.password
     }
@@ -21,21 +19,15 @@ class Login extends Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
 
-  onErrorClick = () => {
-    if (this.state.hasError) {
-      Toast.info('输入错误')
-    }
-  }
-
   onUserNameChange(value) {
     this.setState({
-      value
+      username: value
     })
   }
 
   onPasswordChange(value) {
     this.setState({
-      value
+      password: value
     })
   }
 
@@ -43,45 +35,57 @@ class Login extends Component {
     this.props.form.validateFields((error, value) => {
       console.log(error, value)
     })
-
+    this.props.postLogin({
+      username: this.state.username,
+      password: this.state.password
+    })
   }
 
   componentDidMount() {}
 
   render() {
-    let errors
-    const { login, navigateTo, postLogin } = this.props
     const { getFieldProps, getFieldError } = this.props.form
+    const usernameErrors = getFieldError('username')
+    const passwordErrors = getFieldError('password')
     return (
       <div className={styles.content}>
-        <MyActivityIndicator isFetching={login.isFetching} />
-        <InputItem
-          {...getFieldProps('username', {
-            onChange: this.onUserNameChange,
-            rules: [{ required: true }]
-          })}
-          placeholder="请输入用户名"
-          value={this.state.user}
-        >
-          用户名
-        </InputItem>
-        <InputItem
-          type="password"
-          {...getFieldProps('password', {
-            onChange: this.onPasswordChange,
-            rules: [{ required: true }]
-          })}
-          placeholder="请输入密码"
-          value={this.state.password}
-        >
-          密码
-        </InputItem>
-        <WhiteSpace />
-        {(errors = getFieldError('username')) ? errors.join(',') : null}
-        <WhiteSpace />
-        <Button onClick={this.onSubmit} type="primary">
-          登录
-        </Button>
+        <form>
+          <MyActivityIndicator isFetching={this.props.login.isFetching} />
+          <InputItem
+            {...getFieldProps('username', {
+              onChange: this.onUserNameChange,
+              validateFirst: true,
+              rules: [{ type: 'string', required: true, message: '用户名不能为空' }]
+            })}
+            placeholder="请输入用户名"
+            value={this.state.username}
+          >
+            用户名
+          </InputItem>
+          <Flex className={styles.error}>
+            {usernameErrors ? usernameErrors.join(',') : null}
+          </Flex>
+          <InputItem
+            type="password"
+            {...getFieldProps('password', {
+              onChange: this.onPasswordChange,
+              validateFirst: true,
+              rules: [{ type: 'string', required: true, message: '密码不能为空' }]
+            })}
+            placeholder="请输入密码"
+            value={this.state.password}
+          >
+            密码
+          </InputItem>
+          <Flex className={styles.error}>
+            {passwordErrors ? passwordErrors.join(',') : null}
+          </Flex>
+          <WhiteSpace />
+          <WhiteSpace />
+          <Button onClick={this.onSubmit} type="primary">
+            登录
+          </Button>
+        </form>
       </div>
     )
   }
@@ -97,13 +101,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     postLogin: payload => {
       dispatch(postLoginRequest(payload))
-    },
-    navigateTo: location => {
-      dispatch(push(location))
     }
   }
 }
 
-Login.propTypes = {}
+Login.propTypes = {
+  login: PropTypes.object.isRequired,
+  postLogin: PropTypes.func.isRequired,
+  form: PropTypes.object
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(createForm()(Login))

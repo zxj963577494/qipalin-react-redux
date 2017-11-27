@@ -5,8 +5,8 @@ import {
 } from '../constants/actionTypes'
 
 const initialLoginState = {
-  username: '',
-  password: '',
+  username: 'tougao',
+  password: '^KwunubASjG@*dV&q)8JZSgB',
   isFetching: false,
   isLogin: false,
 }
@@ -17,7 +17,7 @@ function loginReducer(state = initialLoginState, action) {
       return {
         ...state,
         username: action.payload.username,
-        isRefreshing: action.payload.isRefreshing,
+        isFetching: true,
       }
     case POST_LOGIN_SUCCESS:
       return {
