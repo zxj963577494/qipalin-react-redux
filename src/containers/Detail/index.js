@@ -25,10 +25,10 @@ class Detail extends Component {
       <div className={styles.content}>
         <MyActivityIndicator isFetching={isFetching} />
         <Content content={detail} />
-        <Comments
+        {/* <Comments
           comments={this.props.comments}
           getComments={this.props.getComments}
-        />
+        /> */}
       </div>
     )
   }
