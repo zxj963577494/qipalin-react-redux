@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { ListView, PullToRefresh } from 'antd-mobile'
 import fonts from '../../assets/font/font.css'
 import styles from './style.css'
-import {cutstr} from '../../utils/utils'
+import { cutstr } from '../../utils/utils'
 
 export default class ArticlesListView extends Component {
   constructor(props) {
@@ -43,7 +43,7 @@ export default class ArticlesListView extends Component {
           onClick={() => {
             this.props.navigateTo('/article/' + rowData.id)
           }}
-          key={rowID}
+          key={rowData.id}
           style={{ padding: '0 15px' }}
         >
           <div className={styles['articles-row']}>

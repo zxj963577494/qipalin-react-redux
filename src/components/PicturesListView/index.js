@@ -44,7 +44,7 @@ export default class PicturesListView extends Component {
           onClick={() => {
             this.props.navigateTo('/picture/' + rowData.id)
           }}
-          key={rowID}
+          key={rowData.id}
           style={{ padding: '0 15px' }}
         >
           <div className={styles['pictures-row']}>

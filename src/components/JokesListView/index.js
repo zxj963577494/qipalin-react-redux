@@ -44,7 +44,7 @@ export default class JokesListView extends Component {
           onClick={() => {
             this.props.navigateTo('/joke/' + rowData.id)
           }}
-          key={rowID}
+          key={rowData.id}
           style={{ padding: '0 15px' }}
         >
           <div className={styles['jokes-row']}>
