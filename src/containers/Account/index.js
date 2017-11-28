@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Result, WhiteSpace, Flex, Button } from 'antd-mobile'
-import { push } from 'react-router-redux'
+import Cookies from 'universal-cookie'
+import { replace } from 'react-router-redux'
 import { postLogoutRequest } from '../../actions'
 import styles from './style.css'
 
@@ -12,15 +13,21 @@ class Login extends Component {
     this.onBackHome = this.onBackHome.bind(this)
     this.onLogout = this.onLogout.bind(this)
   }
+
   onBackHome() {
-    push('/home')
+    this.props.navigateTo('/home')
   }
 
   onLogout() {
     this.props.postLogout()
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const cookies = new Cookies()
+    if (!(cookies.get('token') && this.props.login.isLogin)) {
+      this.props.navigateTo('/login')
+    }
+  }
 
   render() {
     return (
@@ -30,6 +37,7 @@ class Login extends Component {
             <img
               width="60px"
               height="60px"
+              style={{ borderRadius: '50%' }}
               src={require('../../assets/images/logo-80.png')}
               alt="登录成功"
             />
@@ -38,7 +46,9 @@ class Login extends Component {
           message={this.props.username}
         />
         <WhiteSpace />
+        <WhiteSpace />
         <Flex>
+          <Flex.Item />
           <Flex.Item>
             <Button onClick={this.onBackHome} type="primary">
               回到首页
@@ -49,6 +59,7 @@ class Login extends Component {
               退出登录
             </Button>
           </Flex.Item>
+          <Flex.Item />
         </Flex>
       </div>
     )
@@ -65,6 +76,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     postLogout: () => {
       dispatch(postLogoutRequest())
+    },
+    navigateTo: location => {
+      dispatch(replace(location))
     }
   }
 }

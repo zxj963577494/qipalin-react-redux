@@ -1,6 +1,6 @@
 import { put, fork, take, call } from 'redux-saga/effects'
 import Cookies from 'universal-cookie'
-import { push } from 'react-router-redux'
+import { replace } from 'react-router-redux'
 import { POST_LOGIN_REQUEST } from '../constants/actionTypes'
 import * as action from '../actions'
 import { postLogin } from '../services/api'
@@ -11,7 +11,7 @@ function* postLoginWorker(payload) {
     const response = yield call(postLogin, payload)
     yield put(action.postLoginSuccess(response.data))
     yield fork(setCookies, response.data.token)
-    yield fork(push, '/account')
+    yield put(replace('/account'))
   } catch (error) {
     yield put(action.postLoginFailed(error))
   }

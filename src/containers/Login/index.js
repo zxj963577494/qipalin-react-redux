@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createForm } from 'rc-form'
 import { Button, InputItem, WhiteSpace, Flex } from 'antd-mobile'
-import { push } from 'react-router-redux'
 import Cookies from 'universal-cookie'
+import { replace } from 'react-router-redux'
 import { postLoginRequest } from '../../actions'
 import { MyActivityIndicator } from '../../components'
 import styles from './style.css'
@@ -18,6 +18,7 @@ class Login extends Component {
     }
     this.onUserNameChange = this.onUserNameChange.bind(this)
     this.onPasswordChange = this.onPasswordChange.bind(this)
+    this.onBackHome = this.onBackHome.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
   }
 
@@ -40,10 +41,14 @@ class Login extends Component {
     })
   }
 
+  onBackHome() {
+    this.props.navigateTo('/home')
+  }
+
   componentDidMount() {
     const cookies = new Cookies()
     if (cookies.get('token') && this.props.login.isLogin) {
-      push('/account')
+      this.props.navigateTo('/account')
     }
   }
 
@@ -53,13 +58,16 @@ class Login extends Component {
     const passwordErrors = getFieldError('password')
     return (
       <div className={styles.content}>
+        <WhiteSpace />
         <form>
           <MyActivityIndicator isFetching={this.props.login.isFetching} />
           <InputItem
             {...getFieldProps('username', {
               onChange: this.onUserNameChange,
               validateFirst: true,
-              rules: [{ type: 'string', required: true, message: '用户名不能为空' }]
+              rules: [
+                { type: 'string', required: true, message: '用户名不能为空' }
+              ]
             })}
             placeholder="请输入用户名"
             value={this.state.username}
@@ -74,7 +82,9 @@ class Login extends Component {
             {...getFieldProps('password', {
               onChange: this.onPasswordChange,
               validateFirst: true,
-              rules: [{ type: 'string', required: true, message: '密码不能为空' }]
+              rules: [
+                { type: 'string', required: true, message: '密码不能为空' }
+              ]
             })}
             placeholder="请输入密码"
             value={this.state.password}
@@ -86,9 +96,20 @@ class Login extends Component {
           </Flex>
           <WhiteSpace />
           <WhiteSpace />
-          <Button onClick={this.onSubmit} type="primary">
-            登录
-          </Button>
+          <Flex>
+            <Flex.Item />
+            <Flex.Item>
+              <Button onClick={this.onBackHome} type="warning">
+                回到首页
+              </Button>
+            </Flex.Item>
+            <Flex.Item>
+              <Button onClick={this.onSubmit} type="primary">
+                登录
+              </Button>
+            </Flex.Item>
+            <Flex.Item />
+          </Flex>
         </form>
       </div>
     )
@@ -105,6 +126,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     postLogin: payload => {
       dispatch(postLoginRequest(payload))
+    },
+    navigateTo: location => {
+      dispatch(replace(location))
     }
   }
 }
@@ -112,6 +136,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 Login.propTypes = {
   login: PropTypes.object.isRequired,
   postLogin: PropTypes.func.isRequired,
+  navigateTo: PropTypes.func.isRequired,
   form: PropTypes.object
 }
 
