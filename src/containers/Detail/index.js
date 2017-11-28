@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getDetailRequest, getCommentsRequest } from '../../actions'
+import {
+  getDetailRequest,
+  getCommentsRequest,
+  postPageCountRequest
+} from '../../actions'
 import { Content, MyActivityIndicator, Comments } from '../../components'
 import styles from './style.css'
 
@@ -12,6 +16,7 @@ class Detail extends Component {
       this.props.match.path.includes('picture') ? 1 : 0
     )
     this.props.getComments({ post: this.props.match.params.id })
+    this.props.postPageCount({ id: this.props.match.params.id })
   }
 
   render() {
@@ -47,6 +52,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     getComments: payload => {
       dispatch(getCommentsRequest(payload))
+    },
+    postPageCount: payload => {
+      dispatch(postPageCountRequest(payload))
     }
   }
 }
@@ -54,7 +62,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 Detail.propTypes = {
   detail: PropTypes.object.isRequired,
   getDetail: PropTypes.func.isRequired,
-  getComments: PropTypes.func.isRequired
+  getComments: PropTypes.func.isRequired,
+  postPageCount: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Detail)

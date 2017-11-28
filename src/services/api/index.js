@@ -4,6 +4,7 @@ import { getPictures } from './pictures'
 import { getDetail } from './detail'
 import { getComments } from './comments'
 import { postLogin } from './login'
+import { postViewCount } from './common'
 
 export {
   getArticles,
@@ -12,5 +13,6 @@ export {
   getJokes,
   getPictures,
   getComments,
-  postLogin
+  postLogin,
+  postViewCount
 }

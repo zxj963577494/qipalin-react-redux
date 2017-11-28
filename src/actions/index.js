@@ -23,6 +23,7 @@ import {
   POST_LOGOUT_REQUEST,
   POST_LOGOUT_SUCCESS,
   POST_LOGOUT_FAILED,
+  POST_PAGECOUNT_REQUEST,
   CHANGE_TABBAR,
   SET_NAVBAR
 } from '../constants/actionTypes'
@@ -121,6 +122,10 @@ export const postLogoutSuccess = function() {
 
 export const postLogoutFailed = function() {
   return { type: POST_LOGOUT_FAILED}
+}
+
+export const postPageCountRequest = function(payload) {
+  return { type: POST_PAGECOUNT_REQUEST, payload}
 }
 
 export const changeTabBar = function(payload) {
