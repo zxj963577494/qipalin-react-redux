@@ -94,7 +94,7 @@ export default class PicturesListView extends Component {
         renderFooter={fonter}
         renderRow={row}
         renderSeparator={separator}
-        initialListSize={2}
+        initialListSize={10}
         pageSize={10}
         className="am-list"
         style={{

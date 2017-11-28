@@ -95,7 +95,7 @@ export default class JokesListView extends Component {
         renderFooter={fonter}
         renderRow={row}
         renderSeparator={separator}
-        initialListSize={3}
+        initialListSize={10}
         pageSize={10}
         className="am-list"
         style={{

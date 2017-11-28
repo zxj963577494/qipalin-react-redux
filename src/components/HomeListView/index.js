@@ -80,7 +80,6 @@ export default class HomeListView extends Component {
         useBodyScroll
         renderSeparator={separator}
         className="am-list"
-        pageSize={4}
       />
     )
   }
