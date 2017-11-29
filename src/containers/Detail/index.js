@@ -7,7 +7,6 @@ import {
   postPageCountRequest
 } from '../../actions'
 import { Content, MyActivityIndicator, Comments } from '../../components'
-import styles from './style.css'
 
 class Detail extends Component {
   componentDidMount() {
@@ -22,7 +21,7 @@ class Detail extends Component {
   render() {
     const { detail, isFetching } = this.props.detail
     return (
-      <div className={styles.content}>
+      <div className="page__content">
         <MyActivityIndicator isFetching={isFetching} />
         <Content content={detail} />
         {/* <Comments

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { MyTabBar } from '../../components'
 import { changeTabBar } from '../../actions'
+import globalcss from '../../assets/css/style.css'
 
 class App extends Component {
   render() {

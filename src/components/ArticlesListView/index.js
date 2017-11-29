@@ -46,13 +46,13 @@ export default class ArticlesListView extends Component {
           key={rowData.id}
           style={{ padding: '0 15px' }}
         >
-          <div className={styles['articles-row']}>
+          <div className={styles['articles__row']}>
             <img src={rowData.thumbnail} alt="" />
-            <div className={styles['right']}>
-              <div className={styles['articles-title']}>
+            <div className={styles['articles__row--right']}>
+              <div className={styles['articles__row-title']}>
                 {rowData.title.rendered}
               </div>
-              <div className={styles.meta}>
+              <div className="meta">
                 <span>{cutstr(rowData.date, 10, 1)}</span>
                 <span
                   className={

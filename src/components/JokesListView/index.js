@@ -47,12 +47,12 @@ export default class JokesListView extends Component {
           key={rowData.id}
           style={{ padding: '0 15px' }}
         >
-          <div className={styles['jokes-row']}>
+          <div className={styles['jokes__row']}>
             <div>
               <div
                 dangerouslySetInnerHTML={{ __html: rowData.content.rendered }}
               />
-              <div className={styles.meta}>
+              <div className='meta'>
                 <span>{cutstr(rowData.date, 10, 1)}</span>
                 <span
                   className={

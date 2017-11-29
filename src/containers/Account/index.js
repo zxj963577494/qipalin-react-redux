@@ -5,7 +5,6 @@ import { Result, WhiteSpace, Flex, Button } from 'antd-mobile'
 import Cookies from 'universal-cookie'
 import { replace } from 'react-router-redux'
 import { postLogoutRequest } from '../../actions'
-import styles from './style.css'
 
 class Login extends Component {
   constructor(props) {
@@ -31,7 +30,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className={styles.content}>
+      <div className="page__content">
         <Result
           img={
             <img

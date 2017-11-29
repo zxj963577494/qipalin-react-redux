@@ -7,7 +7,6 @@ import Cookies from 'universal-cookie'
 import { replace } from 'react-router-redux'
 import { postLoginRequest } from '../../actions'
 import { MyActivityIndicator } from '../../components'
-import styles from './style.css'
 
 class Login extends Component {
   constructor(props) {
@@ -57,7 +56,7 @@ class Login extends Component {
     const usernameErrors = getFieldError('username')
     const passwordErrors = getFieldError('password')
     return (
-      <div className={styles.content}>
+      <div className="page__content">
         <WhiteSpace />
         <form>
           <MyActivityIndicator isFetching={this.props.login.isFetching} />
@@ -74,7 +73,7 @@ class Login extends Component {
           >
             用户名
           </InputItem>
-          <Flex className={styles.error}>
+          <Flex className="error">
             {usernameErrors ? usernameErrors.join(',') : null}
           </Flex>
           <InputItem
@@ -91,7 +90,7 @@ class Login extends Component {
           >
             密码
           </InputItem>
-          <Flex className={styles.error}>
+          <Flex className="error">
             {passwordErrors ? passwordErrors.join(',') : null}
           </Flex>
           <WhiteSpace />

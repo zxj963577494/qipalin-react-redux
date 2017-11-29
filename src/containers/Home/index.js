@@ -5,7 +5,7 @@ import { push } from 'react-router-redux'
 import { Flex, WhiteSpace } from 'antd-mobile'
 import { getArticlesRequest, getStickyArticlesRequest } from '../../actions'
 import { MyCarousel, HomeListView, MyActivityIndicator } from '../../components'
-import styles from './Home.css'
+import styles from './style.css'
 
 class Home extends Component {
   componentDidMount() {
@@ -43,7 +43,7 @@ class Home extends Component {
     return (
       <div>
         <MyActivityIndicator isFetching={articles.isFetching} />
-        <div className={styles.header}>
+        <div className={styles['header__sticky']}>
           {sticky.isShowLogo ? this.renderLogo(sticky) : this.renderCarousel()}
         </div>
         <WhiteSpace size="xs" />

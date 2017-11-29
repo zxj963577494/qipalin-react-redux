@@ -1,4 +1,4 @@
-.title {
+.content__title {
     font-size: 24px;
     border-bottom: 1px solid #ededed;
     margin-top: 10px;
@@ -6,7 +6,7 @@
     padding-bottom: 5px;
 }
 
-.date {
+.content__date {
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;

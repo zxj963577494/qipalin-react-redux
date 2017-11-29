@@ -47,11 +47,11 @@ export default class PicturesListView extends Component {
           key={rowData.id}
           style={{ padding: '0 15px' }}
         >
-          <div className={styles['pictures-row']}>
-            <div className={styles['pictures-centent']}>
-              <div className={styles['pictures-title']}>{rowData.name}</div>
+          <div className={styles['pictures__row']}>
+            <div className={styles['pictures__centent']}>
+              <div className={styles['pictures__row--title']}>{rowData.name}</div>
               <img src={rowData.url} alt={rowData.name} />
-              <div className={styles.meta}>
+              <div className="meta">
                 <span>{cutstr(rowData.date, 10, 1)}</span>
                 <span
                   className={
