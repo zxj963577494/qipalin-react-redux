@@ -6,6 +6,7 @@ import {
   getCommentsRequest,
   postPageCountRequest
 } from '../../actions'
+// eslint-disable-next-line
 import { Content, MyActivityIndicator, Comments } from '../../components'
 
 class Detail extends Component {
