@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { ListView } from 'antd-mobile'
-import styles from './style.css'
 
 export default class Comments extends Component {
   constructor(props) {

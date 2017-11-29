@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { WingBlank, Flex } from 'antd-mobile'
+import { WingBlank } from 'antd-mobile'
 import { cutstr, pcToMobile } from '../../utils/utils'
 import fonts from '../../assets/font/font.css'
 import styles from './style.css'
