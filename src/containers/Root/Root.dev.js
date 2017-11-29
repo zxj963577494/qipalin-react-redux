@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
-import { Route, Switch } from 'react-router-dom'
+import { ConnectedRouter as Router } from 'react-router-redux'
+import { Route, Switch } from 'react-router'
 import { connect } from 'react-redux'
 import { MyNavBar } from '../../components'
 //import DevTools from '../DevTools/DevTools'
@@ -22,7 +22,7 @@ class Root extends Component {
     const history = store.history
     return (
       <Provider store={store}>
-        <ConnectedRouter history={history}>
+        <Router history={history}>
           <div>
             <MyNavBar navbar={this.props.navbar} history={history} />
             <Switch>
@@ -39,7 +39,7 @@ class Root extends Component {
               </App>
             </Switch>
           </div>
-        </ConnectedRouter>
+        </Router>
         {/* <DevTools /> */}
       </Provider>
     )
