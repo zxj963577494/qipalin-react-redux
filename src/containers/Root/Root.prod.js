@@ -4,7 +4,17 @@ import { Route, Switch } from 'react-router'
 import { ConnectedRouter as Router } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { MyNavBar } from '../../components'
-import { App, Home, Articles, Jokes, Pictures, Detail, Login, Account } from '../index'
+import {
+  App,
+  Home,
+  Articles,
+  Jokes,
+  Pictures,
+  Detail,
+  Login,
+  Account,
+  Welcome
+} from '../index'
 
 class Root extends Component {
   render() {
@@ -17,6 +27,7 @@ class Root extends Component {
             <div>
               <MyNavBar navbar={this.props.navbar} history={history} />
               <Switch>
+                <Route exec path="/" component={Welcome} />
                 <Route exec path="/article/:id" component={Detail} />
                 <Route exec path="/joke/:id" component={Detail} />
                 <Route exec path="/picture/:id" component={Detail} />

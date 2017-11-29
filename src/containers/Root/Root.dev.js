@@ -13,7 +13,8 @@ import {
   Pictures,
   Detail,
   Login,
-  Account
+  Account,
+  Welcome
 } from '../index'
 
 class Root extends Component {
@@ -24,8 +25,9 @@ class Root extends Component {
       <Provider store={store}>
         <Router history={history}>
           <div>
-            <MyNavBar navbar={this.props.navbar} history={history} />
             <Switch>
+              <Route exec path="/" component={Welcome} />
+              <MyNavBar navbar={this.props.navbar} history={history} />
               <Route exec path="/article/:id" component={Detail} />
               <Route exec path="/joke/:id" component={Detail} />
               <Route exec path="/picture/:id" component={Detail} />
