@@ -1,20 +1,7 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { Route, Switch } from 'react-router'
-import { ConnectedRouter as Router } from 'react-router-redux'
 import { connect } from 'react-redux'
-import { MyNavBar } from '../../components'
-import {
-  App,
-  Home,
-  Articles,
-  Jokes,
-  Pictures,
-  Detail,
-  Login,
-  Account,
-  Welcome
-} from '../index'
+import getRoutes from '../../routes'
 
 class Root extends Component {
   render() {
@@ -22,27 +9,7 @@ class Root extends Component {
     const history = store.history
     return (
       <Provider store={store}>
-        <div>
-          <Router history={history}>
-            <div>
-              <MyNavBar navbar={this.props.navbar} history={history} />
-              <Switch>
-                <Route exec path="/" component={Welcome} />
-                <Route exec path="/article/:id" component={Detail} />
-                <Route exec path="/joke/:id" component={Detail} />
-                <Route exec path="/picture/:id" component={Detail} />
-                <Route exec path="/login" component={Login} />
-                <Route exec path="/account" component={Account} />
-                <App history={history}>
-                  <Route exec path="/home" component={Home} />
-                  <Route exec path="/articles" component={Articles} />
-                  <Route exec path="/jokes" component={Jokes} />
-                  <Route exec path="/pictures" component={Pictures} />
-                </App>
-              </Switch>
-            </div>
-          </Router>
-        </div>
+        {getRoutes(history, this.props.navbar)}
       </Provider>
     )
   }
