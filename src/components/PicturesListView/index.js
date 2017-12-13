@@ -25,13 +25,12 @@ export default class PicturesListView extends Component {
   }
 
   render() {
-    console.log(this.props.pictures)
     const dataSource = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2
     }).cloneWithRows(this.props.pictures.list)
     const separator = (sectionID, rowID) => (
       <div
-        key={`${sectionID}-${rowID}`}
+        key={rowID}
         style={{
           backgroundColor: '#F5F5F9',
           borderBottom: '1px solid #ECECED'
@@ -44,7 +43,7 @@ export default class PicturesListView extends Component {
           onClick={() => {
             this.props.navigateTo('/picture/' + rowData.id)
           }}
-          key={rowData.id}
+          key={rowID}
           style={{ padding: '0 15px' }}
         >
           <div className={styles['pictures__row']}>
@@ -96,15 +95,10 @@ export default class PicturesListView extends Component {
         renderSeparator={separator}
         initialListSize={10}
         pageSize={10}
-        className="am-list"
         style={{
           height: '100%',
           overflow: 'auto'
         }}
-        onScroll={() => {
-          console.log('scroll')
-        }}
-        scrollRenderAheadDistance={500}
         onEndReached={this.onEndReached}
         onEndReachedThreshold={100}
         pullToRefresh={

@@ -30,7 +30,7 @@ export default class ArticlesListView extends Component {
     }).cloneWithRows(this.props.articles.list)
     const separator = (sectionID, rowID) => (
       <div
-        key={`${sectionID}-${rowID}`}
+        key={rowID}
         style={{
           backgroundColor: '#F5F5F9',
           borderBottom: '1px solid #ECECED'
@@ -43,7 +43,7 @@ export default class ArticlesListView extends Component {
           onClick={() => {
             this.props.navigateTo('/article/' + rowData.id)
           }}
-          key={rowData.id}
+          key={rowID}
           style={{ padding: '0 15px' }}
         >
           <div className={styles['articles__row']}>
@@ -97,15 +97,10 @@ export default class ArticlesListView extends Component {
         renderSeparator={separator}
         initialListSize={10}
         pageSize={10}
-        className="am-list"
         style={{
           height: '100%',
           overflow: 'auto'
         }}
-        onScroll={() => {
-          console.log('scroll')
-        }}
-        scrollRenderAheadDistance={500}
         onEndReached={this.onEndReached}
         onEndReachedThreshold={100}
         pullToRefresh={

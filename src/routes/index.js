@@ -11,14 +11,12 @@ import {
   Detail,
   Login,
   Account,
-  Welcome
 } from '../containers'
 
 export default (history, navbar) => {
   const routes = (
     <Router history={history}>
       <div>
-        <Route exec path="/" component={Welcome} />
         <MyNavBar navbar={navbar} history={history} />
         <Switch>
           <Route exec path="/article/:id" component={Detail} />

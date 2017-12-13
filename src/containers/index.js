@@ -7,7 +7,6 @@ import Pictures from './Pictures'
 import Detail from './Detail'
 import Login from './Login'
 import Account from './Account'
-import Welcome from './Welcome'
 
 export {
   Root,
@@ -19,5 +18,4 @@ export {
   Detail,
   Login,
   Account,
-  Welcome
 }
