@@ -1,5 +1,9 @@
 # 奇葩林
 
+## 注意
+
+建议查看项目[OverWatchTeams-React-Redux](https://github.com/zxj963577494/OverWatchTeams)
+
 ## React移动端
 
 ![home.png](https://i.loli.net/2017/11/28/5a1d45d9427fe.png)
